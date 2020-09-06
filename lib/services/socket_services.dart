@@ -14,15 +14,7 @@ class SockeServices with ChangeNotifier {
 
   void _initConfig() {
 // Dart client
-    // String myIp = 'http://mpe-hdelarosa:3000/';
     String myIp = 'http://192.168.1.17:3000/';
-/*
-    IO.Socket socket = IO.io(myIp, {
-      'transports': ['websocket'],
-      'autoConnect': true
-    });
-
-*/
 
     IO.Socket socket = IO.io(myIp, <String, dynamic>{
       'transports': ['websocket'],
@@ -30,18 +22,28 @@ class SockeServices with ChangeNotifier {
       'autoConnect': true
     });
 
+    //Se conecta
     socket.on('connect', (_) {
       print('Conectado al servidor de NODE!!');
       this._serverStatus = ServerStatus.Online;
       notifyListeners();
     });
 
-    socket.on('event', (data) => print(data));
+    //Se desconecta
     socket.on('disconnect', (_) {
       print('Desconectado!!');
       this._serverStatus = ServerStatus.Offline;
       notifyListeners();
     });
+
+    //Si un cliente envia algun mensaje se ve este mensaje
+    socket.on('nuevo-mensaje', (payload) {
+      print('nuevo-mensaje:$payload');
+      // notifyListeners();
+    });
+
+    socket.on('event', (data) => print(data));
+
     socket.on('fromServer', (_) => print(_));
   }
 }
