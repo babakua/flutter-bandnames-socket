@@ -10,6 +10,9 @@ class SockeServices with ChangeNotifier {
   ServerStatus _serverStatus = ServerStatus.Connecting;
   IO.Socket _socket; //Para exponer este objeto a las demas paginas
 
+  Function get emit =>
+      this._socket.emit; //Para hacer referencia directamente al emit del socket
+
   ServerStatus get serverStatus => this._serverStatus;
   IO.Socket get socket => this._socket; //
 

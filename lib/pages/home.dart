@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:votacion/models/band.dart';
 
+import 'package:provider/provider.dart'; //Para manejar el estado
+import 'package:votacion/services/socket_services.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -19,6 +22,8 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    final socketService = Provider.of<SockeServices>(context);
+
     return SafeArea(
       top: true,
       bottom: true,
@@ -28,6 +33,14 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text('BandNames', style: TextStyle(color: Colors.black87)),
           backgroundColor: Colors.white,
+          elevation: 1,
+          actions: <Widget>[
+            Container(
+                margin: EdgeInsets.only(right: 10),
+                child: (socketService.serverStatus == ServerStatus.Online)
+                    ? Icon(Icons.check_circle, color: Colors.blue[300])
+                    : Icon(Icons.offline_bolt, color: Colors.red)),
+          ],
         ),
         body: ListView.builder(
             itemCount: bands.length,

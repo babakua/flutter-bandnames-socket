@@ -20,7 +20,10 @@ class StatusPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.message),
         onPressed: () {
-          socketService.socket.emit('emitir-mensaje', 'Mensaje desde fluter');
+          //Enviando un mensaje a todos los usuarios
+          // socketService.emit:puedo usar el emit que define en la clase socket_services
+          socketService.socket.emit('emitir-mensaje',
+              {'nombre': 'Flutter', 'mensaje:': 'mensaje desde flutter'});
         },
       ),
     );
