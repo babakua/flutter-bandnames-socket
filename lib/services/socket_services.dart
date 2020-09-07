@@ -41,7 +41,8 @@ class SockeServices with ChangeNotifier {
 
     //Si un cliente envia algun mensaje se ve este mensaje
     socket.on('nuevo-mensaje', (payload) {
-      print('nuevo-mensaje');
+      print(payload[2]);
+      // print('nuevo-mensaje:' + payload.toString());
       // print('nuevo-mensaje:$payload');
       // print('nombre:' + payload['nombre']);
       // print('nombre:' + payload['apellido']);
