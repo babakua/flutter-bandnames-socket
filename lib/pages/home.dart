@@ -19,16 +19,22 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('BandNames', style: TextStyle(color: Colors.black87)),
-        backgroundColor: Colors.white,
+    return SafeArea(
+      top: true,
+      bottom: true,
+      left: true,
+      right: true,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('BandNames', style: TextStyle(color: Colors.black87)),
+          backgroundColor: Colors.white,
+        ),
+        body: ListView.builder(
+            itemCount: bands.length,
+            itemBuilder: (context, i) => _bandTitle(bands[i])),
+        floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add), elevation: 1, onPressed: addNewBand),
       ),
-      body: ListView.builder(
-          itemCount: bands.length,
-          itemBuilder: (context, i) => _bandTitle(bands[i])),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add), elevation: 1, onPressed: addNewBand),
     );
   }
 
