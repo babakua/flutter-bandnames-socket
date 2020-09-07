@@ -41,10 +41,12 @@ class SockeServices with ChangeNotifier {
 
     //Si un cliente envia algun mensaje se ve este mensaje
     socket.on('nuevo-mensaje', (payload) {
-      print(payload[2]);
+      //Poner en el HTML socket:
+      //socket.emit('emitir-mensaje',{nombre:'hector',apellido:'De la rosa'});
+      print(payload);
       // print('nuevo-mensaje:' + payload.toString());
       // print('nuevo-mensaje:$payload');
-      // print('nombre:' + payload['nombre']);
+      //print(payload.containsKey);
       // print('nombre:' + payload['apellido']);
       // notifyListeners();
     });
