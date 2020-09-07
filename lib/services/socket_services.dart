@@ -8,7 +8,7 @@ enum ServerStatus { Online, Offline, Connecting }
 
 class SockeServices with ChangeNotifier {
   ServerStatus _serverStatus = ServerStatus.Connecting;
-  get serverStatus => this._serverStatus;
+  ServerStatus get serverStatus => this._serverStatus;
 
   SockeServices() {
     _initConfig();
@@ -40,16 +40,16 @@ class SockeServices with ChangeNotifier {
     });
 
     //Si un cliente envia algun mensaje se ve este mensaje
+    /*
     socket.on('nuevo-mensaje', (payload) {
       //Poner en el HTML socket:
       //socket.emit('emitir-mensaje',{nombre:'hector',apellido:'De la rosa'});
       print(payload);
-      // print('nuevo-mensaje:' + payload.toString());
-      // print('nuevo-mensaje:$payload');
-      //print(payload.containsKey);
-      // print('nombre:' + payload['apellido']);
-      // notifyListeners();
+      print(payload.containsKey('nombre')
+          ? payload['nombre']
+          : 'No llego el nombre');
     });
+    */
 
     socket.on('event', (data) => print(data));
 
