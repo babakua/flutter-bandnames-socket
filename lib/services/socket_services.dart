@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
@@ -39,7 +41,10 @@ class SockeServices with ChangeNotifier {
 
     //Si un cliente envia algun mensaje se ve este mensaje
     socket.on('nuevo-mensaje', (payload) {
-      print('nuevo-mensaje:$payload');
+      print('nuevo-mensaje');
+      // print('nuevo-mensaje:$payload');
+      // print('nombre:' + payload['nombre']);
+      // print('nombre:' + payload['apellido']);
       // notifyListeners();
     });
 
