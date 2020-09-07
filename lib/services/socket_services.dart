@@ -14,7 +14,8 @@ class SockeServices with ChangeNotifier {
 
   void _initConfig() {
 // Dart client
-    String myIp = 'http://192.168.1.17:3000/';
+    // String myIp = 'http://192.168.1.17:3000/';
+    String myIp = 'http://10.172.0.211:3000/';
 
     IO.Socket socket = IO.io(myIp, <String, dynamic>{
       'transports': ['websocket'],

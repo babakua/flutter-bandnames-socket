@@ -15,12 +15,6 @@ class StatusPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text('ServerStatus:${socketService.serverStatus}'),
-          CupertinoTextField(
-            style: TextStyle(color: Colors.red),
-            onChanged: (String value) {
-              print(value);
-            },
-          )
         ],
       )),
     );
