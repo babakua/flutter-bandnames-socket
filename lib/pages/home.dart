@@ -90,7 +90,10 @@ class _HomePageState extends State<HomePage> {
             alignment: Alignment.centerLeft,
             child: Text('Delete Band', style: TextStyle(color: Colors.white)),
           )),
-      onDismissed: (direction) => print('Codigo de la banda es:' + band.id),
+      onDismissed: (_) {
+        socketService.emit('delete-band', {'id': band.id});
+        print('Codigo de la banda es:' + band.id);
+      },
       child: ListTile(
         leading: CircleAvatar(
           child: Text(band.name.substring(0, 2)),
