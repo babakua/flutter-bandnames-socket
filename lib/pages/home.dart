@@ -153,15 +153,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   void addBandToList(String name) {
-    if (name.length > 10) {
-      //Podemos agregar
-      print('Nueva banda:' + name);
-      this
-          .bands
-          .add((new Band(id: DateTime.now().toString(), name: name, votes: 0)));
-      setState(() {});
+    if (name.length > 1) {
+      //El listen:false es como estamos fuera de un widget no trate de refrescar la pantalla
+      final socketService = Provider.of<SockeServices>(context, listen: false);
+      socketService.emit('add-band', {'name': name});
     }
-
     Navigator.pop(context);
   }
 }
