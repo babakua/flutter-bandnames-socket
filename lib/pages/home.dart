@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> {
     if (Platform.isAndroid) {
       showDialog(
         context: context,
-        builder: (context) {
+        builder: (_) {
           return AlertDialog(
             title: Text('New band name:'),
             content: TextField(
