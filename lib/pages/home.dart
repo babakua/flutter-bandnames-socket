@@ -178,13 +178,20 @@ class _HomePageState extends State<HomePage> {
     bands.forEach((band) {
       dataMap.putIfAbsent(band.name, () => band.votes.toDouble());
     });
-
-    // dataMap.putIfAbsent('American Air Line', () => 5);
-    // dataMap.putIfAbsent('COPA', () => 4);
-    // dataMap.putIfAbsent('JET BLUE', () => 13);
-    // dataMap.putIfAbsent('Air EUROPA', () => 25);
-
-    return Container(
-        width: double.infinity, height: 200, child: PieChart(dataMap: dataMap));
+/*
+    dataMap.putIfAbsent('American Air Line', () => 5);
+    dataMap.putIfAbsent('COPA', () => 4);
+    dataMap.putIfAbsent('JET BLUE', () => 13);
+    dataMap.putIfAbsent('Air EUROPA', () => 25);
+*/
+    return PieChart(dataMap: dataMap, chartType: ChartType.ring);
+    // return Container(
+    //     width: double.infinity,
+    //     height: 200,
+    //     child: PieChart(
+    //       dataMap: dataMap,
+    //       chartType: ChartType.ring,
+    //       animationDuration: Duration(milliseconds: 800),
+    //     ));
   }
 }
