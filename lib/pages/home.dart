@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
     final socketService = Provider.of<SockeServices>(context, listen: false);
 
     return Dismissible(
-      key: Key(band.id),
+      key: UniqueKey(), // Key(band.id),
       direction: DismissDirection.startToEnd,
       background: Container(
           padding: EdgeInsets.only(left: 8.0),
@@ -92,6 +92,7 @@ class _HomePageState extends State<HomePage> {
           )),
       onDismissed: (_) {
         socketService.emit('delete-band', {'id': band.id});
+        print(band.id);
         print('Codigo de la banda es:' + band.id);
       },
       child: ListTile(
