@@ -6,6 +6,7 @@ import 'package:votacion/models/band.dart';
 
 import 'package:provider/provider.dart'; //Para manejar el estado
 import 'package:votacion/services/socket_services.dart';
+import 'package:pie_chart/pie_chart.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
       right: true,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('BandNames', style: TextStyle(color: Colors.black87)),
+          title: Text('Airs Lines', style: TextStyle(color: Colors.black87)),
           backgroundColor: Colors.white,
           elevation: 1,
           actions: <Widget>[
@@ -68,9 +69,16 @@ class _HomePageState extends State<HomePage> {
                     : Icon(Icons.offline_bolt, color: Colors.red)),
           ],
         ),
-        body: ListView.builder(
-            itemCount: bands.length,
-            itemBuilder: (context, i) => _bandTitle(bands[i])),
+        body: Column(
+          children: <Widget>[
+            _showGraph(),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: bands.length,
+                  itemBuilder: (context, i) => _bandTitle(bands[i])),
+            ),
+          ],
+        ),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add), elevation: 1, onPressed: addNewBand),
       ),
@@ -163,5 +171,20 @@ class _HomePageState extends State<HomePage> {
       socketService.emit('add-band', {'name': name});
     }
     Navigator.pop(context);
+  }
+
+  Widget _showGraph() {
+    Map<String, double> dataMap = new Map();
+    bands.forEach((band) {
+      dataMap.putIfAbsent(band.name, () => band.votes.toDouble());
+    });
+
+    // dataMap.putIfAbsent('American Air Line', () => 5);
+    // dataMap.putIfAbsent('COPA', () => 4);
+    // dataMap.putIfAbsent('JET BLUE', () => 13);
+    // dataMap.putIfAbsent('Air EUROPA', () => 25);
+
+    return Container(
+        width: double.infinity, height: 200, child: PieChart(dataMap: dataMap));
   }
 }
