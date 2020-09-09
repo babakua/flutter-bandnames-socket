@@ -177,21 +177,33 @@ class _HomePageState extends State<HomePage> {
     Map<String, double> dataMap = new Map();
     bands.forEach((band) {
       dataMap.putIfAbsent(band.name, () => band.votes.toDouble());
+      // print('Nombre de banda:' + band.name);
     });
-/*
+
+    print(dataMap);
+    /*
     dataMap.putIfAbsent('American Air Line', () => 5);
     dataMap.putIfAbsent('COPA', () => 4);
     dataMap.putIfAbsent('JET BLUE', () => 13);
     dataMap.putIfAbsent('Air EUROPA', () => 25);
 */
-    return PieChart(dataMap: dataMap, chartType: ChartType.ring);
-    // return Container(
-    //     width: double.infinity,
-    //     height: 200,
-    //     child: PieChart(
-    //       dataMap: dataMap,
-    //       chartType: ChartType.ring,
-    //       animationDuration: Duration(milliseconds: 800),
-    //     ));
+
+    final List<Color> colorList = [
+      Colors.orange[100],
+      Colors.green[100],
+      Colors.yellow[200],
+      Colors.pink[100],
+    ];
+
+    // return PieChart(dataMap: dataMap, chartType: ChartType.ring);
+    return Container(
+        width: double.infinity,
+        height: 200,
+        child: PieChart(
+          dataMap: dataMap,
+          colorList: colorList,
+          chartType: ChartType.ring,
+          animationDuration: Duration(milliseconds: 800),
+        ));
   }
 }
