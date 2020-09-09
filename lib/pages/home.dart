@@ -190,13 +190,15 @@ class _HomePageState extends State<HomePage> {
     ];
 
     // return PieChart(dataMap: dataMap, chartType: ChartType.ring);
-    return Container(
-        width: double.infinity,
-        height: 150,
-        child: PieChart(
-            dataMap: dataMap,
-            colorList: colorList,
-            chartType: ChartType.ring,
-            animationDuration: Duration(milliseconds: 800)));
+    return dataMap.isNotEmpty
+        ? Container(
+            width: double.infinity,
+            height: 150,
+            child: PieChart(
+                dataMap: dataMap,
+                colorList: colorList,
+                chartType: ChartType.ring,
+                animationDuration: Duration(milliseconds: 800)))
+        : () => print('sin data');
   }
 }
