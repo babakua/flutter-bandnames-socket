@@ -51,37 +51,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final socketService = Provider.of<SockeServices>(context);
 
-    return SafeArea(
-      top: true,
-      bottom: true,
-      left: true,
-      right: true,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Airs Lines', style: TextStyle(color: Colors.black87)),
-          backgroundColor: Colors.white,
-          elevation: 1,
-          actions: <Widget>[
-            Container(
-                margin: EdgeInsets.only(right: 10),
-                child: (socketService.serverStatus == ServerStatus.Online)
-                    ? Icon(Icons.check_circle, color: Colors.blue[300])
-                    : Icon(Icons.offline_bolt, color: Colors.red)),
-          ],
-        ),
-        body: Column(
-          children: <Widget>[
-            _showGraph(),
-            Expanded(
-              child: ListView.builder(
-                  itemCount: bands.length,
-                  itemBuilder: (context, i) => _bandTitle(bands[i])),
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add), elevation: 1, onPressed: addNewBand),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Airs Lines', style: TextStyle(color: Colors.black87)),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        actions: <Widget>[
+          Container(
+              margin: EdgeInsets.only(right: 10),
+              child: (socketService.serverStatus == ServerStatus.Online)
+                  ? Icon(Icons.check_circle, color: Colors.blue[300])
+                  : Icon(Icons.offline_bolt, color: Colors.red)),
+        ],
       ),
+      body: Column(
+        children: <Widget>[
+          _showGraph(),
+          Expanded(
+            child: ListView.builder(
+                itemCount: bands.length,
+                itemBuilder: (context, i) => _bandTitle(bands[i])),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add), elevation: 1, onPressed: addNewBand),
     );
   }
 
@@ -198,7 +192,7 @@ class _HomePageState extends State<HomePage> {
     // return PieChart(dataMap: dataMap, chartType: ChartType.ring);
     return Container(
         width: double.infinity,
-        height: 200,
+        height: 150,
         child: PieChart(
           dataMap: dataMap,
           colorList: colorList,
