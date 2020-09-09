@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
       // print('Nombre de banda:' + band.name);
     });
 
-    print(dataMap);
+    //print(dataMap);
     /*
     dataMap.putIfAbsent('American Air Line', () => 5);
     dataMap.putIfAbsent('COPA', () => 4);
@@ -194,10 +194,9 @@ class _HomePageState extends State<HomePage> {
         width: double.infinity,
         height: 150,
         child: PieChart(
-          dataMap: dataMap,
-          colorList: colorList,
-          chartType: ChartType.ring,
-          animationDuration: Duration(milliseconds: 800),
-        ));
+            dataMap: dataMap,
+            colorList: colorList,
+            chartType: ChartType.ring,
+            animationDuration: Duration(milliseconds: 800)));
   }
 }
