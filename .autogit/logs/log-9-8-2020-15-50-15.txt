@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Wed Sep 09 2020 15:50:15 GMT-0400 (Bolivia Time)
+------------------------------------------------------
+
+Modified files:
+* lib/services/socket_services.dart
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
