@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:votacion/pages/menu.dart';
 
@@ -21,24 +23,52 @@ class _LoginState extends State<Login> {
             Text('aaaa'),
             FlatButton(
               child: Text('Entrar'),
-              onPressed: () => print(
-                  'boton'), //Navigator.of(context).push('NavDrawerExample'),
-            )
+              onPressed: () {
+                print('test');
+
+                //  Navigator.push(context, route());\\
+                // Navigator.push(context,MaterialPageRoute(builder: (context) => NavDrawerExample());
+
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => new NavDrawerExample()));
+
+                //De esta forma no podemos realizar un back a la pagina anterior
+                // buildPushReplacementNamed(context);
+              },
+            ),
+            Center(
+              child: Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const ListTile(
+                      leading: Icon(Icons.album),
+                      title: Text('The Enchanted Nightingale'),
+                      subtitle:
+                          Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
+                    ),
+                    ButtonBar(
+                      children: <Widget>[
+                        FlatButton(
+                          child: const Text('BUY TICKETS'),
+                          onPressed: () {/* ... */},
+                        ),
+                        FlatButton(
+                          child: const Text('LISTEN'),
+                          onPressed: () {/* ... */},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-}
 
-/*
-FlatButton(
-  onPressed: () {
-    /*...*/
-    Navigator.of(context).push(_NewPage(2))
-  },
-  child: Text(
-    "Flat Button",
-  ),
-)
-*/
+  Future<Object> buildPushReplacementNamed(BuildContext context) =>
+      Navigator.pushReplacementNamed(context, 'NavDrawerExample');
+}

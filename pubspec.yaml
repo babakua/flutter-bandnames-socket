@@ -31,6 +31,7 @@ dependencies:
   socket_io_client: ^0.9.11 ##Para usar el socket
   provider: ^4.3.2+2 ##Para manejar los estatus
   pie_chart: ^4.0.1
+  carousel_slider: ^2.2.1
 
 dev_dependencies:
   flutter_test:

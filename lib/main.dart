@@ -5,6 +5,7 @@ import 'package:votacion/pages/status.dart';
 import 'package:votacion/pages/menu.dart';
 import 'package:votacion/pages/login.dart';
 import 'package:votacion/services/socket_services.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
           'login': (_) => Login(),
           'home': (_) => HomePage(),
           'status': (_) => StatusPage(),
-          'menu': (_) => NavDrawerExample(),
+          'menu': (_) => NavDrawerExample()
         },
       ),
     );
