@@ -3,6 +3,7 @@ import 'package:provider/provider.dart'; //Para manejar el estado
 import 'package:votacion/pages/home.dart';
 import 'package:votacion/pages/status.dart';
 import 'package:votacion/pages/menu.dart';
+import 'package:votacion/pages/login.dart';
 import 'package:votacion/services/socket_services.dart';
 
 void main() => runApp(MyApp());
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Material App',
-        initialRoute: 'menu', //Pagina de inicio
+        initialRoute: 'login', //Pagina de inicio
         routes: {
+          'login': (_) => Login(),
           'home': (_) => HomePage(),
           'status': (_) => StatusPage(),
           'menu': (_) => NavDrawerExample(),
