@@ -23,8 +23,8 @@ class SockeServices with ChangeNotifier {
   void _initConfig() {
 // Dart client
     // String myIp = 'http://192.168.1.17:3000/';
-    String myIp = 'http://10.172.0.211:3000/';
-    // String myIp = 'https://app-flutter-bandserver.herokuapp.com/';
+    //  String myIp = 'http://10.172.0.211:3000/';
+    String myIp = 'https://app-flutter-bandserver.herokuapp.com/';
 
     this._socket = IO.io(myIp, <String, dynamic>{
       'transports': ['websocket'],
