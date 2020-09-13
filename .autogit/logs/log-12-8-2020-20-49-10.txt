@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Sat Sep 12 2020 20:49:10 GMT-0400 (Bolivia Time)
+------------------------------------------------------
+
+Modified files:
+* lib/main.dart
+* lib/services/socket_services.dart
+
+
+Created files:
+* .autogit/logs/log-11-8-2020-20-19-27.txt
+* lib/pages/menu.dart
+
+
+Deleted files:
+
+
+Renamed files:

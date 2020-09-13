@@ -6,6 +6,7 @@ class NavDrawerExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final drawerHeader = UserAccountsDrawerHeader(
+      decoration: BoxDecoration(color: Colors.lightGreen[300]),
       accountName: Text('User Name'),
       accountEmail: Text('user.name@email.com'),
       currentAccountPicture: CircleAvatar(
@@ -15,11 +16,11 @@ class NavDrawerExample extends StatelessWidget {
       otherAccountsPictures: <Widget>[
         CircleAvatar(
           child: Text('A'),
-          backgroundColor: Colors.yellow,
+          backgroundColor: Colors.grey[700],
         ),
         CircleAvatar(
           child: Text('B'),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.indigo[100],
         )
       ],
     );
