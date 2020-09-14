@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:votacion/pages/menu.dart';
+import 'package:votacion/pages/login.dart';
 
-class Login extends StatefulWidget {
+class Inicio extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _InicioState createState() => _InicioState();
 }
 
-class _LoginState extends State<Login> {
+class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,19 +17,25 @@ class _LoginState extends State<Login> {
       right: true,
       bottom: true,
       child: Scaffold(
+        appBar: AppBar(
+          title: Text('COOPBUENO Móvil'),
+          actions: <Widget>[
+            // Pregunta(),
+          ],
+        ),
         body: Column(
           children: [
-            Text('login'),
+            Text('14  Sep 2020'),
             FlatButton(
               child: Text('Entrar'),
               onPressed: () {
-                print('test');
+                print('Acceso');
 
                 //  Navigator.push(context, route());\\
                 // Navigator.push(context,MaterialPageRoute(builder: (context) => NavDrawerExample());
 
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => new NavDrawerExample()));
+                    builder: (BuildContext context) => new Login()));
 
                 //De esta forma no podemos realizar un back a la pagina anterior
                 // buildPushReplacementNamed(context);
@@ -39,26 +45,7 @@ class _LoginState extends State<Login> {
               child: Card(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const ListTile(
-                      leading: Icon(Icons.album),
-                      title: Text('The Enchanted Nightingale'),
-                      subtitle:
-                          Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-                    ),
-                    ButtonBar(
-                      children: <Widget>[
-                        FlatButton(
-                          child: const Text('BUY TICKETS'),
-                          onPressed: () {/* ... */},
-                        ),
-                        FlatButton(
-                          child: const Text('LISTEN'),
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ],
+                  children: <Widget>[],
                 ),
               ),
             ),
@@ -70,4 +57,15 @@ class _LoginState extends State<Login> {
 
   Future<Object> buildPushReplacementNamed(BuildContext context) =>
       Navigator.pushReplacementNamed(context, 'NavDrawerExample');
+}
+
+Widget titulo() {
+  return Text('PagoCOOP',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 30.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.green[400],
+        fontFamily: 'Lobster',
+      ));
 }
