@@ -52,8 +52,7 @@ class _InicioState extends State<Inicio> {
                     espacioEntreObjetos(),
                     btnOtrasInformaciones(),
                     espacioEntreObjetos(),
-                    configuracion2(),
-                    ver(),
+                    configuracion(),
                     espacioEntreObjetos(),
                   ],
                 ),
@@ -80,6 +79,10 @@ Widget titulo() {
       ));
 }
 
+Widget logo() {
+  return Image.asset('assets/logo.jpg');
+}
+
 Widget espacioEntreObjetos() {
   return Padding(
     padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
@@ -87,81 +90,8 @@ Widget espacioEntreObjetos() {
 }
 
 Widget btnAcceso() {
-  return SizedBox(
-    width: double.infinity,
-    child: RaisedButton(
-      onPressed: () => print('Acceso'),
-      textColor: Colors.white,
-      color: Colors.green[700],
-      padding: const EdgeInsets.all(8.0),
-      child: new Text(
-        'Acceso',
-        //"Entrar",
-      ),
-    ),
-  );
-}
-
-Widget btnOtrasInformaciones() {
-  return SizedBox(
-    width: double.infinity,
-    child: RaisedButton(
-      onPressed: () => print('Acceso'),
-      textColor: Colors.white,
-      color: Colors.green[700],
-      padding: const EdgeInsets.all(8.0),
-      child: new Text(
-        'Acceso',
-        //"Entrar",
-      ),
-    ),
-  );
-}
-
-Widget configuracion() {
-  return Padding(
-    padding: const EdgeInsets.all(1.0), //EdgeInsets.only(top: 15.0),
-    child: SizedBox(
-        width: double.infinity,
-        child: RaisedButton.icon(
-          textColor: Colors.white,
-          icon: Icon(
-            Icons.arrow_forward,
-          ),
-          color: Colors.green[700],
-          label: const Text('Configuración'),
-          onPressed: () {},
-        )),
-  );
-
-  // return SizedBox(
-  //   width: double.infinity,
-  //   child: RaisedButton(
-  //     onPressed: () => print('Configuraciones'),
-  //     textColor: Colors.white,
-
-  //     color: Colors.green[700],
-  //     padding: const EdgeInsets.all(8.0),
-  //     child: new Text(
-  //       'Configuración',
-  //       //"Entrar",
-  //     ),
-  //   ),
-  // );
-}
-
-Widget ver() {
   return Container(
-    child: Row(children: <Widget>[
-      Text("Hector "),
-      Spacer(),
-      Text("De la Rosa"),
-    ]),
-  );
-}
-
-Widget configuracion2() {
-  return Container(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       width: double.infinity,
       child: RaisedButton(
           shape: RoundedRectangleBorder(
@@ -171,9 +101,87 @@ Widget configuracion2() {
           },
           textColor: Colors.white,
           color: Colors.green[700],
-          padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           child: Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    color: Colors.green[700],
+                    padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
+                    child: Text(
+                      'Acceso',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
+                    child: Icon(
+                      Icons.arrow_right,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ))));
+}
+
+Widget btnOtrasInformaciones() {
+  return Container(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      width: double.infinity,
+      child: RaisedButton(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
+          onPressed: () {
+            print('Button Clicked.');
+          },
+          textColor: Colors.white,
+          color: Colors.green[700],
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 00, 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    color: Colors.green[700],
+                    padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
+                    child: Text(
+                      'Otras Informaciones',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
+                    child: Icon(
+                      Icons.arrow_right,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ))));
+}
+
+Widget configuracion() {
+  return Container(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      width: double.infinity,
+      child: RaisedButton(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
+          onPressed: () {
+            print('Button Clicked.');
+          },
+          textColor: Colors.white,
+          color: Colors.green[700],
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -187,9 +195,9 @@ Widget configuracion2() {
                   ),
                   Spacer(),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(4, 0, 10, 0),
+                    padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
                     child: Icon(
-                      Icons.arrow_forward,
+                      Icons.arrow_right,
                       color: Colors.white,
                       size: 30,
                     ),
