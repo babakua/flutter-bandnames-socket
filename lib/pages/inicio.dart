@@ -44,8 +44,17 @@ class _InicioState extends State<Inicio> {
             Center(
               child: Card(
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[],
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    espacioEntreObjetos(),
+                    espacioEntreObjetos(),
+                    btnAcceso(),
+                    espacioEntreObjetos(),
+                    btnOtrasInformaciones(),
+                    espacioEntreObjetos(),
+                    configuracion(),
+                    espacioEntreObjetos(),
+                  ],
                 ),
               ),
             ),
@@ -68,4 +77,74 @@ Widget titulo() {
         color: Colors.green[400],
         fontFamily: 'Lobster',
       ));
+}
+
+Widget espacioEntreObjetos() {
+  return Padding(
+    padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+  );
+}
+
+Widget btnAcceso() {
+  return SizedBox(
+    width: double.infinity,
+    child: RaisedButton(
+      onPressed: () => print('Acceso'),
+      textColor: Colors.white,
+      color: Colors.green[700],
+      padding: const EdgeInsets.all(8.0),
+      child: new Text(
+        'Acceso',
+        //"Entrar",
+      ),
+    ),
+  );
+}
+
+Widget btnOtrasInformaciones() {
+  return SizedBox(
+    width: double.infinity,
+    child: RaisedButton(
+      onPressed: () => print('Acceso'),
+      textColor: Colors.white,
+      color: Colors.green[700],
+      padding: const EdgeInsets.all(8.0),
+      child: new Text(
+        'Acceso',
+        //"Entrar",
+      ),
+    ),
+  );
+}
+
+Widget configuracion() {
+  return Padding(
+    padding: const EdgeInsets.all(1.0), //EdgeInsets.only(top: 15.0),
+    child: SizedBox(
+        width: double.infinity,
+        child: RaisedButton.icon(
+          textColor: Colors.white,
+          icon: Icon(
+            Icons.arrow_forward,
+          ),
+          color: Colors.green[700],
+          label: const Text('Configuración'),
+          onPressed: () {},
+        )),
+  );
+
+  // return SizedBox(
+  //   width: double.infinity,
+  //   child: RaisedButton(
+  //     onPressed: () => print('Configuraciones'),
+  //     textColor: Colors.white,
+
+  //     color: Colors.green[700],
+  //     padding: const EdgeInsets.all(8.0),
+  //     child: new Text(
+  //       'Configuración',
+  //       //"Entrar",
+  //     ),
+  //   ),
+  // );
 }
