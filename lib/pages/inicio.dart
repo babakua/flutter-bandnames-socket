@@ -52,7 +52,8 @@ class _InicioState extends State<Inicio> {
                     espacioEntreObjetos(),
                     btnOtrasInformaciones(),
                     espacioEntreObjetos(),
-                    configuracion(),
+                    configuracion2(),
+                    ver(),
                     espacioEntreObjetos(),
                   ],
                 ),
@@ -147,4 +148,52 @@ Widget configuracion() {
   //     ),
   //   ),
   // );
+}
+
+Widget ver() {
+  return Container(
+    child: Row(children: <Widget>[
+      Text("Hector "),
+      Spacer(),
+      Text("De la Rosa"),
+    ]),
+  );
+}
+
+Widget configuracion2() {
+  return Container(
+      width: double.infinity,
+      child: RaisedButton(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
+          onPressed: () {
+            print('Button Clicked.');
+          },
+          textColor: Colors.white,
+          color: Colors.green[700],
+          padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    color: Colors.green[700],
+                    padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
+                    child: Text(
+                      'Configuración',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(4, 0, 10, 0),
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ))));
 }
