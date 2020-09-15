@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:votacion/pages/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-List imgList = ['assets/logo1.jpg', 'assets/logo1.jpg', 'assets/logo1.jpg'];
+List imgList = ['assets/logo1.jpg', 'assets/logo2.jpg', 'assets/logo3.jpg'];
 
 class Inicio extends StatefulWidget {
   @override
@@ -229,8 +229,9 @@ Widget imagenes() {
                         child:
 
                             //Text(item.toString())
+
                             imgruta((item.toString()))),
-                    color: Colors.green,
+                    color: Colors.white,
                   ))
               .toList(),
         )
