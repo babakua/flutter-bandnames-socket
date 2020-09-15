@@ -13,8 +13,6 @@ class Inicio extends StatefulWidget {
 }
 
 class _InicioState extends State<Inicio> {
-  int _current = 0;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
