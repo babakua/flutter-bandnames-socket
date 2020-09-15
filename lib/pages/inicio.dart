@@ -9,6 +9,9 @@ class Inicio extends StatefulWidget {
 }
 
 class _InicioState extends State<Inicio> {
+  int _current = 0;
+  List imgList = ['assets/logo1.jpg', 'assets/logo1.jpg', 'assets/logo1.jpg'];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,6 +28,7 @@ class _InicioState extends State<Inicio> {
         ),
         body: Column(
           children: [
+            imagenes(),
             Align(
               alignment: Alignment.bottomLeft,
               child: Text('14  Sep 2020'),
@@ -217,4 +221,10 @@ Widget configuracion() {
                   ),
                 ],
               ))));
+}
+
+Widget imagenes() {
+  return Column(
+    children: [Text('hola2')],
+  );
 }

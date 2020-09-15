@@ -36,7 +36,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-carousel_slider:
+carousel_slider: ^2.2.1
 #    path: ../carousel/   
 
 # For information on the generic Dart part of this file, see the
