@@ -1,9 +1,13 @@
+/*
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 import 'carousel_options.dart';
 
 class CarouselState {
+
+
+
   /// The [CarouselOptions] to create this state
   CarouselOptions options;
 
@@ -41,3 +45,6 @@ class CarouselState {
   CarouselState(
       this.options, this.onResetTimer, this.onResumeTimer, this.changeMode);
 }
+
+
+*/

@@ -1,0 +1,21 @@
+-------------------- Auto-Git Log --------------------
+		Mon Sep 14 2020 21:45:20 GMT-0400 (Bolivia Time)
+------------------------------------------------------
+
+Modified files:
+* pubspec.yaml
+
+
+Created files:
+* .autogit/logs/log-14-8-2020-20-59-39.txt
+* lib/pages/carousel/carousel_controller.dart
+* lib/pages/carousel/carousel_options.dart
+* lib/pages/carousel/carousel_slider.dart
+* lib/pages/carousel/carousel_state.dart
+* lib/pages/carousel/utils.dart
+
+
+Deleted files:
+
+
+Renamed files:

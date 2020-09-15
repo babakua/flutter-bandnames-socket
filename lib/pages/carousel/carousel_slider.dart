@@ -1,3 +1,5 @@
+/*
+
 library carousel_slider;
 
 import 'dart:async';
@@ -308,3 +310,6 @@ class _MultipleGestureRecognizer extends PanGestureRecognizer {
     acceptGesture(pointer);
   }
 }
+
+
+*/
