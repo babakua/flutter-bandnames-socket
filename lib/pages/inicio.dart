@@ -21,6 +21,7 @@ class _InicioState extends State<Inicio> {
       right: true,
       bottom: true,
       child: Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           backgroundColor: colorDeFondo,
           title: Text('COOPBUENO Móvil'),
@@ -30,10 +31,14 @@ class _InicioState extends State<Inicio> {
         ),
         body: Column(
           children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            ),
             Align(
               alignment: Alignment.bottomLeft,
               child: Text('14  Sep 2020'),
             ),
+            Spacer(),
             logo(),
             imagenes(context),
             Center(
