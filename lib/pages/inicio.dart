@@ -34,13 +34,13 @@ class _InicioState extends State<Inicio> {
               alignment: Alignment.bottomLeft,
               child: Text('14  Sep 2020'),
             ),
-            imagenes(),
+            logo(),
+            imagenes(context),
             Center(
               child: Card(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    logo(),
                     Container(
                         child: Align(
                       alignment: Alignment.bottomCenter,
@@ -85,10 +85,6 @@ Widget titulo() {
 
 Widget logo() {
   return Image.asset('assets/logo.jpg');
-}
-
-Widget imgruta(String ruta) {
-  return Image.asset(ruta);
 }
 
 Widget espacioEntreObjetos() {
@@ -215,14 +211,20 @@ Widget configuracion() {
               ))));
 }
 
-Widget imagenes() {
+Widget imgruta(String ruta) {
+  return Image.asset(ruta, fit: BoxFit.fill);
+}
+
+Widget imagenes(BuildContext context) {
   return Container(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
+        listaMov(context),
+        /*
         CarouselSlider(
-          options: CarouselOptions(),
+          options: CarouselOptions(autoPlay: true, initialPage: 0),
           items: imgList
               .map((item) => Container(
                     child: Center(
@@ -235,7 +237,28 @@ Widget imagenes() {
                   ))
               .toList(),
         )
+        */
       ],
     ),
+  );
+}
+
+Widget listaMov(BuildContext context) {
+  return CarouselSlider(
+    options: CarouselOptions(
+        height: 150.0, autoPlay: true, initialPage: 0, enlargeCenterPage: true),
+    items: imgList
+        .map((item) => Container(
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
+              child: Center(
+                  child:
+
+                      //Text(item.toString())
+
+                      imgruta((item.toString()))),
+              color: Colors.white,
+            ))
+        .toList(),
   );
 }
