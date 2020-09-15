@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:votacion/pages/login.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
+List imgList = ['assets/logo1.jpg', 'assets/logo1.jpg', 'assets/logo1.jpg'];
 
 class Inicio extends StatefulWidget {
   @override
@@ -10,7 +13,6 @@ class Inicio extends StatefulWidget {
 
 class _InicioState extends State<Inicio> {
   int _current = 0;
-  List imgList = ['assets/logo1.jpg', 'assets/logo1.jpg', 'assets/logo1.jpg'];
 
   @override
   Widget build(BuildContext context) {
@@ -28,26 +30,11 @@ class _InicioState extends State<Inicio> {
         ),
         body: Column(
           children: [
-            imagenes(),
             Align(
               alignment: Alignment.bottomLeft,
               child: Text('14  Sep 2020'),
             ),
-            FlatButton(
-              child: Text('Entrar'),
-              onPressed: () {
-                print('Acceso');
-
-                //  Navigator.push(context, route());\\
-                // Navigator.push(context,MaterialPageRoute(builder: (context) => NavDrawerExample());
-
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => new Login()));
-
-                //De esta forma no podemos realizar un back a la pagina anterior
-                // buildPushReplacementNamed(context);
-              },
-            ),
+            imagenes(),
             Center(
               child: Card(
                 child: Column(
@@ -62,7 +49,7 @@ class _InicioState extends State<Inicio> {
                         children: [
                           espacioEntreObjetos(),
                           espacioEntreObjetos(),
-                          btnAcceso(),
+                          btnAcceso(context),
                           espacioEntreObjetos(),
                           btnOtrasInformaciones(),
                           espacioEntreObjetos(),
@@ -100,13 +87,17 @@ Widget logo() {
   return Image.asset('assets/logo.jpg');
 }
 
+Widget imgruta(String ruta) {
+  return Image.asset(ruta);
+}
+
 Widget espacioEntreObjetos() {
   return Padding(
     padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
   );
 }
 
-Widget btnAcceso() {
+Widget btnAcceso(context) {
   return Container(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       width: double.infinity,
@@ -114,7 +105,8 @@ Widget btnAcceso() {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
           onPressed: () {
-            print('Button Clicked.');
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => new Login()));
           },
           textColor: Colors.white,
           color: Colors.green[700],
@@ -224,7 +216,25 @@ Widget configuracion() {
 }
 
 Widget imagenes() {
-  return Column(
-    children: [Text('hola2')],
+  return Container(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        CarouselSlider(
+          options: CarouselOptions(),
+          items: imgList
+              .map((item) => Container(
+                    child: Center(
+                        child:
+
+                            //Text(item.toString())
+                            imgruta((item.toString()))),
+                    color: Colors.green,
+                  ))
+              .toList(),
+        )
+      ],
+    ),
   );
 }
