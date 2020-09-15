@@ -212,7 +212,12 @@ Widget configuracion() {
 }
 
 Widget imgruta(String ruta) {
-  return Image.asset(ruta, fit: BoxFit.fill);
+  return Image.asset(
+    ruta,
+    fit: BoxFit.fill,
+    height: 110.0,
+    width: double.infinity,
+  );
 }
 
 Widget imagenes(BuildContext context) {
@@ -222,6 +227,9 @@ Widget imagenes(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         listaMov(context),
+        SizedBox(
+          height: 20,
+        )
         /*
         CarouselSlider(
           options: CarouselOptions(autoPlay: true, initialPage: 0),
@@ -246,7 +254,16 @@ Widget imagenes(BuildContext context) {
 Widget listaMov(BuildContext context) {
   return CarouselSlider(
     options: CarouselOptions(
-        height: 150.0, autoPlay: true, initialPage: 0, enlargeCenterPage: true),
+      height: 200.0,
+      autoPlay: true,
+      initialPage: 0,
+      enableInfiniteScroll: true,
+      enlargeCenterPage: true,
+      autoPlayInterval: Duration(seconds: 2),
+      autoPlayAnimationDuration: Duration(milliseconds: 2000),
+      pauseAutoPlayOnTouch: true,
+      scrollDirection: Axis.horizontal,
+    ),
     items: imgList
         .map((item) => Container(
               width: MediaQuery.of(context).size.width,
