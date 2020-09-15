@@ -5,6 +5,7 @@ import 'package:votacion/pages/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 List imgList = ['assets/logo1.jpg', 'assets/logo2.jpg', 'assets/logo3.jpg'];
+final colorDeFondo = const Color.fromARGB(255, 0, 105, 92);
 
 class Inicio extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _InicioState extends State<Inicio> {
       bottom: true,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: colorDeFondo,
           title: Text('COOPBUENO Móvil'),
           actions: <Widget>[
             // Pregunta(),
@@ -105,7 +107,7 @@ Widget btnAcceso(context) {
                 builder: (BuildContext context) => new Login()));
           },
           textColor: Colors.white,
-          color: Colors.green[700],
+          color: colorDeFondo,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           child: Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -113,7 +115,7 @@ Widget btnAcceso(context) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    color: Colors.green[700],
+                    color: colorDeFondo,
                     padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
                     child: Text(
                       'Acceso',
@@ -144,7 +146,7 @@ Widget btnOtrasInformaciones() {
             print('Button Clicked.');
           },
           textColor: Colors.white,
-          color: Colors.green[700],
+          color: colorDeFondo,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           child: Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 00, 0),
@@ -152,7 +154,7 @@ Widget btnOtrasInformaciones() {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    color: Colors.green[700],
+                    color: colorDeFondo,
                     padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
                     child: Text(
                       'Otras Informaciones',
@@ -183,7 +185,7 @@ Widget configuracion() {
             print('Button Clicked.');
           },
           textColor: Colors.white,
-          color: Colors.green[700],
+          color: colorDeFondo,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           child: Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -191,7 +193,7 @@ Widget configuracion() {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    color: Colors.green[700],
+                    color: colorDeFondo,
                     padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
                     child: Text(
                       'Configuración',
@@ -227,9 +229,7 @@ Widget imagenes(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         listaMov(context),
-        SizedBox(
-          height: 20,
-        )
+
         /*
         CarouselSlider(
           options: CarouselOptions(autoPlay: true, initialPage: 0),
