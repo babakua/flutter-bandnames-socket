@@ -25,7 +25,10 @@ class _InicioState extends State<Inicio> {
         ),
         body: Column(
           children: [
-            Text('14  Sep 2020'),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text('14  Sep 2020'),
+            ),
             FlatButton(
               child: Text('Entrar'),
               onPressed: () {
@@ -46,14 +49,24 @@ class _InicioState extends State<Inicio> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    espacioEntreObjetos(),
-                    espacioEntreObjetos(),
-                    btnAcceso(),
-                    espacioEntreObjetos(),
-                    btnOtrasInformaciones(),
-                    espacioEntreObjetos(),
-                    configuracion(),
-                    espacioEntreObjetos(),
+                    logo(),
+                    Container(
+                        child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          espacioEntreObjetos(),
+                          espacioEntreObjetos(),
+                          btnAcceso(),
+                          espacioEntreObjetos(),
+                          btnOtrasInformaciones(),
+                          espacioEntreObjetos(),
+                          configuracion(),
+                          espacioEntreObjetos(),
+                        ],
+                      ),
+                    )),
                   ],
                 ),
               ),
