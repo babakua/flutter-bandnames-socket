@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Tue Sep 15 2020 09:36:32 GMT-0400 (Bolivia Time)
+------------------------------------------------------
+
+Modified files:
+* assets/logo.jpg
+
+
+Created files:
+* .autogit/logs/log-15-8-2020-9-6-12.txt
+* assets/logo1.jpg
+* assets/logo3.jpg
+
+
+Deleted files:
+
+
+Renamed files:
