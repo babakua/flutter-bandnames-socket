@@ -42,6 +42,11 @@ class _LoginState extends State<Login> {
                   children: <Widget>[
                     logo(),
                     Text('Usuario'),
+                    TextField(),
+                    Text('Clave'),
+                    TextField(
+                      obscureText: true,
+                    )
 
 /*
                     
