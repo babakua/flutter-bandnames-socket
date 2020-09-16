@@ -19,7 +19,6 @@ class _LoginState extends State<Login> {
       child: Scaffold(
         body: Column(
           children: [
-            logo(),
             Text('login'),
             FlatButton(
               child: Text('Entrar'),
@@ -41,6 +40,11 @@ class _LoginState extends State<Login> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
+                    logo(),
+                    Text('Usuario'),
+
+/*
+                    
                     const ListTile(
                       leading: Icon(Icons.album),
                       title: Text('The Enchanted Nightingale'),
@@ -48,6 +52,7 @@ class _LoginState extends State<Login> {
                           Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
                     ),
                     ButtonBar(
+
                       children: <Widget>[
                         FlatButton(
                           child: const Text('BUY TICKETS'),
@@ -59,6 +64,8 @@ class _LoginState extends State<Login> {
                         ),
                       ],
                     ),
+
+*/
                   ],
                 ),
               ),
@@ -74,5 +81,8 @@ class _LoginState extends State<Login> {
 }
 
 Widget logo() {
-  return Image.asset('assets/logo.jpg');
+  return Image.asset(
+    'assets/logo.jpg',
+    width: 300,
+  );
 }
