@@ -19,6 +19,7 @@ class _LoginState extends State<Login> {
       child: Scaffold(
         body: Column(
           children: [
+            logo(),
             Text('login'),
             FlatButton(
               child: Text('Entrar'),
@@ -70,4 +71,8 @@ class _LoginState extends State<Login> {
 
   Future<Object> buildPushReplacementNamed(BuildContext context) =>
       Navigator.pushReplacementNamed(context, 'NavDrawerExample');
+}
+
+Widget logo() {
+  return Image.asset('assets/logo.jpg');
 }
