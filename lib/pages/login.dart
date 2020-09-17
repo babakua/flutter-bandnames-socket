@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:votacion/pages/menu.dart';
+import 'pregunta.dart';
+// import 'package:votacion/pages/menu.dart';
 
 final colorDeFondo = const Color.fromARGB(255, 0, 105, 92);
 
@@ -19,6 +20,14 @@ class _LoginState extends State<Login> {
       right: true,
       bottom: true,
       child: Scaffold(
+        resizeToAvoidBottomPadding: false,
+        appBar: AppBar(
+          backgroundColor: colorDeFondo,
+          title: Text('Login'),
+          actions: <Widget>[
+            Pregunta(),
+          ],
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:votacion/pages/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'pregunta.dart';
 
 List imgList = ['assets/logo1.jpg', 'assets/logo2.jpg', 'assets/logo3.jpg'];
 final colorDeFondo = const Color.fromARGB(255, 0, 105, 92);
@@ -26,7 +27,7 @@ class _InicioState extends State<Inicio> {
           backgroundColor: colorDeFondo,
           title: Text('COOPBUENO Móvil'),
           actions: <Widget>[
-            // Pregunta(),
+            Pregunta(),
           ],
         ),
         body:
