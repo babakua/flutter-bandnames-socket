@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:votacion/db_Provider.dart';
 import 'pregunta.dart';
 // import 'package:votacion/pages/menu.dart';
 
@@ -47,10 +49,12 @@ class _LoginState extends State<Login> {
                           txtUsuario(),
                           SizedBox(height: 30),
                           txtClave(),
+                          recuperarClave(),
                           SizedBox(height: 30),
-                          btnIniciar(),
-                          SizedBox(height: 10),
-                          btnRegistro(),
+                          botontes(),
+                          //  btnIniciar(),
+                          // SizedBox(height: 10),
+                          // btnRegistro(),
                         ],
                       ),
                     ),
@@ -147,7 +151,9 @@ Widget txtClave() {
 Widget btnIniciar() {
   return Container(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-      width: double.infinity,
+      // width: double.infinity,
+      height: 40,
+      width: 160,
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
@@ -186,7 +192,9 @@ Widget btnIniciar() {
 Widget btnRegistro() {
   return Container(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-      width: double.infinity,
+      // width: double.infinity,
+      height: 40,
+      width: 140,
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
@@ -220,4 +228,30 @@ Widget btnRegistro() {
                   ),
                 ],
               ))));
+}
+
+Widget recuperarClave() {
+  return FlatButton(
+    // color: DBProvider.colorBoton,//
+    child: Text(
+      'Recuperar contraseña', // AppLocalizations.of(context).translate('aceptar'),
+      //"ACEPTAR",
+
+      style: TextStyle(
+          // decoration: TextDecoration.underline,
+          color: Colors.blue[900] // DBProvider.colorBoton,
+          ),
+    ),
+    onPressed: () => exit(0),
+  );
+}
+
+Widget botontes() {
+  return Column(
+    children: [
+      Row(
+        children: [btnIniciar(), btnRegistro()],
+      ),
+    ],
+  );
 }
