@@ -29,48 +29,52 @@ class _InicioState extends State<Inicio> {
             // Pregunta(),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-              ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Text('14  Sep 2020'),
-              ),
-              Spacer(),
-              logo(),
-              imagenes(context),
-              Center(
-                child: Card(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Container(
-                          child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            espacioEntreObjetos(),
-                            espacioEntreObjetos(),
-                            btnAcceso(context),
-                            espacioEntreObjetos(),
-                            btnOtrasInformaciones(),
-                            espacioEntreObjetos(),
-                            configuracion(),
-                            espacioEntreObjetos(),
-                          ],
-                        ),
-                      )),
-                    ],
-                  ),
+        body:
+
+            // SingleChildScrollView(
+            // child:
+
+            Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text('14  Sep 2020'),
+            ),
+            Spacer(),
+            logo(),
+            imagenes(context),
+            Center(
+              child: Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Container(
+                        child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          espacioEntreObjetos(),
+                          espacioEntreObjetos(),
+                          btnAcceso(context),
+                          espacioEntreObjetos(),
+                          btnOtrasInformaciones(),
+                          espacioEntreObjetos(),
+                          configuracion(),
+                          espacioEntreObjetos(),
+                        ],
+                      ),
+                    )),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
+        //),
       ),
     );
   }
