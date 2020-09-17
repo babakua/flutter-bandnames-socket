@@ -49,6 +49,8 @@ class _LoginState extends State<Login> {
                           txtClave(),
                           SizedBox(height: 30),
                           btnIniciar(),
+                          SizedBox(height: 10),
+                          btnRegistro(),
                         ],
                       ),
                     ),
@@ -164,7 +166,7 @@ Widget btnIniciar() {
                     color: colorDeFondo,
                     padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
                     child: Text(
-                      'INICIAR SESION',
+                      'Iniciar sesion',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -173,6 +175,45 @@ Widget btnIniciar() {
                     padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
                     child: Icon(
                       Icons.vpn_key,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ))));
+}
+
+Widget btnRegistro() {
+  return Container(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      width: double.infinity,
+      child: RaisedButton(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
+          onPressed: () {
+            print('Button Clicked.');
+          },
+          textColor: Colors.white,
+          color: colorDeFondo,
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 00, 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    color: colorDeFondo,
+                    padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
+                    child: Text(
+                      'Registrate',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
+                    child: Icon(
+                      Icons.add_circle_outline,
                       color: Colors.white,
                       size: 30,
                     ),
