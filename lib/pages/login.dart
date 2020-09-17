@@ -19,6 +19,7 @@ class _LoginState extends State<Login> {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('login'),
               FlatButton(
@@ -37,18 +38,20 @@ class _LoginState extends State<Login> {
                   // buildPushReplacementNamed(context);
                 },
               ),
-              Center(
-                child: Card(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      logo(),
-                      Text('Usuario'),
-                      TextField(),
-                      Text('Clave'),
-                      TextField(
-                        obscureText: true,
-                      )
+              //  Center(
+              // child:
+              Card(
+                child: Column(
+                  // mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    logo(),
+                    Text('Usuario'),
+                    TextField(),
+                    Text('Clave'),
+                    TextField(
+                      obscureText: true,
+                    )
 
 /*
                       
@@ -73,10 +76,10 @@ class _LoginState extends State<Login> {
                       ),
 
 */
-                    ],
-                  ),
+                  ],
                 ),
               ),
+              // ),
             ],
           ),
         ),
