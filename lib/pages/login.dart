@@ -231,18 +231,22 @@ Widget btnRegistro() {
 }
 
 Widget recuperarClave() {
-  return FlatButton(
-    // color: DBProvider.colorBoton,//
-    child: Text(
-      'Recuperar contraseña', // AppLocalizations.of(context).translate('aceptar'),
-      //"ACEPTAR",
+  return Align(
+    alignment: Alignment.bottomRight,
+    child: FlatButton(
+      // color: DBProvider.colorBoton,//
 
-      style: TextStyle(
-          // decoration: TextDecoration.underline,
-          color: Colors.blue[900] // DBProvider.colorBoton,
-          ),
+      child: Text(
+        'Recuperar contraseña', // AppLocalizations.of(context).translate('aceptar'),
+        //"ACEPTAR",
+
+        style: TextStyle(
+            // decoration: TextDecoration.underline,
+            color: Colors.blue[900] // DBProvider.colorBoton,
+            ),
+      ),
+      onPressed: () => print('dfasdf'),
     ),
-    onPressed: () => exit(0),
   );
 }
 
