@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Mon Sep 21 2020 08:46:09 GMT-0400 (Bolivia Time)
+------------------------------------------------------
+
+Modified files:
+* lib/pages/ejemplo.dart
+
+
+Created files:
+* .autogit/logs/log-20-8-2020-21-48-35.txt
+
+
+Deleted files:
+
+
+Renamed files:
