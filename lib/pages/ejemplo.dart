@@ -39,11 +39,33 @@ class _EjemploState extends State<Ejemplo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
+                      color: Colors.black,
                       width: 50,
                       height: 50,
-                    )
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      color: Colors.red,
+                      width: 50,
+                      height: 50,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      color: Colors.blue,
+                      width: 50,
+                      height: 50,
+                    ),
                   ],
                 ),
+              ),
+
+              CircleAvatar(
+                child: Icon(Icons.add),
+                backgroundColor: Colors.green,
               ),
               // ),
             ],
