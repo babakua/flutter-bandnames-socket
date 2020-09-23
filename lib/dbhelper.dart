@@ -46,8 +46,21 @@ class Databasehelper {
   }
 
   // functions to insert, query , update and delete
+  //Insertar registro
   Future<int> insert(Map<String, dynamic> row) async {
     Database db = await instance.database;
     return await db.insert(tabla, row);
+  }
+
+//Consulta para todos los registros
+  Future<List<Map<String, dynamic>>> queryall() async {
+    Database db = await instance.database;
+    return await db.query(tabla);
+  }
+
+  Future<List<Map<String, dynamic>>> queryspecific(int edad) async {
+    Database db = await instance.database;
+    var res = await db.query(tabla, where: "edad=?", whereArgs: [edad]);
+    return res;
   }
 }

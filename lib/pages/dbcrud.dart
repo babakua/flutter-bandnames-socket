@@ -12,12 +12,24 @@ final dbhelper = Databasehelper.instance; //Para la base de datos local
 
 void insertdata() async {
   Map<String, dynamic> row = {
-    Databasehelper.columNombre: "Hector",
-    Databasehelper.columnEdad: 15,
+    Databasehelper.columNombre: "Felicia",
+    Databasehelper.columnEdad: 20,
   };
   final id = await dbhelper.insert(row);
   print(id);
   print('INSERTO LO DATOS');
+}
+
+void queryall() async {
+  var allrows = await dbhelper.queryall();
+  allrows.forEach((row) {
+    print(row);
+  });
+}
+
+void queryspecific() async {
+  var allrows = await dbhelper.queryspecific(20);
+  print(allrows);
 }
 
 class Dbcrud extends StatefulWidget {
@@ -87,7 +99,7 @@ Widget btnInsertar() {
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
           onPressed: insertdata,
           textColor: Colors.white,
-          color: Colors.green,
+          color: colorDeFondo,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           child: Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 00, 0),
@@ -124,9 +136,7 @@ Widget btnConsulta() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: () {
-            print('Consulta.');
-          },
+          onPressed: queryall,
           textColor: Colors.white,
           color: Colors.blue,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -165,9 +175,7 @@ Widget btnActualizar() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: () {
-            print('Actualizar.');
-          },
+          onPressed: queryspecific,
           textColor: Colors.white,
           color: Colors.yellow,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -247,9 +255,7 @@ Widget btnConsultaEspecifica() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: () {
-            print('Consulta.');
-          },
+          onPressed: queryspecific,
           textColor: Colors.white,
           color: Colors.blue,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
