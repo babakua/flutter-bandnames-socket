@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:votacion/dbhelper.dart';
 
 import 'pregunta.dart';
 // import 'package:votacion/pages/menu.dart';
@@ -13,6 +14,18 @@ class Dbcrud extends StatefulWidget {
 }
 
 class _DbcrudState extends State<Dbcrud> {
+  final dbhelper = Databasehelper.instance; //Para la base de datos local
+
+  void insertdata() async {
+    Map<String, dynamic> row = {
+      Databasehelper.columNombre: "Hector",
+      Databasehelper.columnEdad: 15,
+    };
+    final id = await dbhelper.insert(row);
+    print(id);
+    print('INSERTO LO DATOS');
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -73,6 +86,7 @@ Widget btnInsertar() {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
           onPressed: () {
+            btnInsertar();
             print('Insertando.');
           },
           textColor: Colors.white,
