@@ -71,6 +71,7 @@ class Databasehelper {
   Future<int> deletedata(int edad) async {
     Database db = await instance.database;
     var res = await db.delete(tabla, where: "edad = ?", whereArgs: [edad]);
+
     return res;
   }
 
@@ -80,6 +81,7 @@ class Databasehelper {
     String sql = "UPDATE usuarios set nombre='" + "ramon' where edad=20";
     print(sql);
     db.execute(sql);
+
     return 1;
   }
 
@@ -87,7 +89,6 @@ class Databasehelper {
     Directory documentdirectory = await getApplicationDocumentsDirectory();
     //var path2 = documentdirectory.path;
     String path = join(documentdirectory.path, _databasename);
-
     // Database db = await instance.database;
     await deleteDatabase(path);
     return "Base de datos eliminada!!!";
