@@ -8,24 +8,24 @@ import 'pregunta.dart';
 
 final colorDeFondo = const Color.fromARGB(255, 0, 105, 92);
 
+final dbhelper = Databasehelper.instance; //Para la base de datos local
+
+void insertdata() async {
+  Map<String, dynamic> row = {
+    Databasehelper.columNombre: "Hector",
+    Databasehelper.columnEdad: 15,
+  };
+  final id = await dbhelper.insert(row);
+  print(id);
+  print('INSERTO LO DATOS');
+}
+
 class Dbcrud extends StatefulWidget {
   @override
   _DbcrudState createState() => _DbcrudState();
 }
 
 class _DbcrudState extends State<Dbcrud> {
-  final dbhelper = Databasehelper.instance; //Para la base de datos local
-
-  void insertdata() async {
-    Map<String, dynamic> row = {
-      Databasehelper.columNombre: "Hector",
-      Databasehelper.columnEdad: 15,
-    };
-    final id = await dbhelper.insert(row);
-    print(id);
-    print('INSERTO LO DATOS');
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -85,12 +85,9 @@ Widget btnInsertar() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: () {
-            btnInsertar();
-            print('Insertando.');
-          },
+          onPressed: insertdata,
           textColor: Colors.white,
-          color: colorDeFondo,
+          color: Colors.green,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
           child: Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 00, 0),
