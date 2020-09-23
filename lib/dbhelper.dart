@@ -19,13 +19,17 @@ class Databasehelper {
   static final Databasehelper instance = Databasehelper._privateConstructor();
 
   Future<Database> get database async {
+    print('Pasando por get database');
+    //Si la base de datos ya existe retorna la db
     if (_database != null) return _database;
 
+    //De no existir la base de datos entonces procede a su creación.
     _database = await _initDatabase();
     return _database;
   }
 
   _initDatabase() async {
+    print('Pasando por _initDatabase');
     Directory documentdirectory = await getApplicationDocumentsDirectory();
     //var path2 = documentdirectory.path;
     String path = join(documentdirectory.path, _databasename);
@@ -77,5 +81,15 @@ class Databasehelper {
     print(sql);
     db.execute(sql);
     return 1;
+  }
+
+  Future<String> borrarBaseDeDatos() async {
+    Directory documentdirectory = await getApplicationDocumentsDirectory();
+    //var path2 = documentdirectory.path;
+    String path = join(documentdirectory.path, _databasename);
+
+    // Database db = await instance.database;
+    await deleteDatabase(path);
+    return "Base de datos eliminada!!!";
   }
 }
