@@ -1,8 +1,6 @@
-/*
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-
 import 'package:sqflite/sqflite.dart';
 
 class Databasehelper {
@@ -15,7 +13,7 @@ class Databasehelper {
   static final columName = "nombre";
   static final columnAge = "edad";
 
-  static Database _database;
-}
+  // static Database _database;
 
-*/
+  Databasehelper._privateConstructor();
+}
