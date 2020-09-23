@@ -46,6 +46,7 @@ class _DbcrudState extends State<Dbcrud> {
                     SizedBox(height: 20),
                     btnBorrar(),
                     SizedBox(height: 20),
+                    btnConsultaEspecifica(),
                   ],
                 ),
               ),
@@ -218,6 +219,47 @@ Widget btnBorrar() {
                     padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
                     child: Icon(
                       Icons.remove,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ))));
+}
+
+Widget btnConsultaEspecifica() {
+  return Container(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      // width: double.infinity,
+      height: 40,
+      width: 170,
+      child: RaisedButton(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
+          onPressed: () {
+            print('Consulta.');
+          },
+          textColor: Colors.white,
+          color: Colors.blue,
+          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 00, 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    color: Colors.blue,
+                    padding: EdgeInsets.fromLTRB(10, 4, 4, 4),
+                    child: Text(
+                      'Consulta esp.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Spacer(),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
+                    child: Icon(
+                      Icons.query_builder,
                       color: Colors.white,
                       size: 30,
                     ),
