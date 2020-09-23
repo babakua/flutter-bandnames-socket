@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; //Para manejar el estado
+import 'package:votacion/pages/dbcrud.dart';
 import 'package:votacion/pages/ejemplo.dart';
 import 'package:votacion/pages/home.dart';
 import 'package:votacion/pages/inicio.dart';
@@ -19,14 +20,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Material App',
-        initialRoute: 'ejemplo', //Pagina de inicio
+        initialRoute: 'cruddb', //Pagina de inicio
         routes: {
           'inicio': (_) => Inicio(),
           'login': (_) => Login(),
           'home': (_) => HomePage(),
           'status': (_) => StatusPage(),
           'menu': (_) => NavDrawerExample(),
-          'ejemplo': (_) => Ejemplo()
+          'ejemplo': (_) => Ejemplo(),
+          'cruddb': (_) => Dbcrud(),
         },
       ),
     );
