@@ -32,6 +32,16 @@ void queryspecific() async {
   print(allrows);
 }
 
+void delete() async {
+  var id = await dbhelper.deletedata(20);
+  print(id);
+}
+
+void update() async {
+  var row = await dbhelper.updatedata(20);
+  print(row);
+}
+
 class Dbcrud extends StatefulWidget {
   @override
   _DbcrudState createState() => _DbcrudState();
@@ -175,7 +185,7 @@ Widget btnActualizar() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: queryspecific,
+          onPressed: update,
           textColor: Colors.white,
           color: Colors.yellow,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -214,9 +224,7 @@ Widget btnBorrar() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: () {
-            print('Borrar.');
-          },
+          onPressed: delete,
           textColor: Colors.white,
           color: Colors.red,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),

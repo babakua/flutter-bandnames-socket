@@ -63,4 +63,19 @@ class Databasehelper {
     var res = await db.query(tabla, where: "edad=?", whereArgs: [edad]);
     return res;
   }
+
+  Future<int> deletedata(int edad) async {
+    Database db = await instance.database;
+    var res = await db.delete(tabla, where: "edad = ?", whereArgs: [edad]);
+    return res;
+  }
+
+  Future<int> updatedata(int id) async {
+    Database db = await instance.database;
+    // var res = await db.update(tabla, {"nombre": "ramon"}, whereArgs: [id]);
+    String sql = "UPDATE usuarios set nombre='" + "ramon' where edad=20";
+    print(sql);
+    db.execute(sql);
+    return 1;
+  }
 }
