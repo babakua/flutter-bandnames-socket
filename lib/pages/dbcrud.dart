@@ -11,13 +11,17 @@ final colorDeFondo = const Color.fromARGB(255, 0, 105, 92);
 final dbhelper = Databasehelper.instance; //Para la base de datos local
 
 void insertdata() async {
-  Map<String, dynamic> row = {
-    Databasehelper.columNombre: "Felicia",
-    Databasehelper.columnEdad: 20,
-  };
-  final id = await dbhelper.insert(row);
-  print(id);
-  print('INSERTO LO DATOS');
+  try {
+    Map<String, dynamic> row = {
+      Databasehelper.columNombre: "Felicia",
+      Databasehelper.columnEdad: 20,
+    };
+    final id = await dbhelper.insert(row);
+    print(id);
+    print('INSERTO LO DATOS');
+  } catch (e) {
+    print('Metodo:dbcrud.dart-insertdata ||' + e.toString());
+  }
 }
 
 void queryall() async {
@@ -32,23 +36,39 @@ void queryall() async {
 }
 
 void queryspecific() async {
-  var allrows = await dbhelper.queryspecific(20);
-  print(allrows);
+  try {
+    var allrows = await dbhelper.queryspecific(20);
+    print(allrows);
+  } catch (e) {
+    print('Metodo:dbcrud.dart-queryspecific ||' + e.toString());
+  }
 }
 
 void delete() async {
-  var id = await dbhelper.deletedata(20);
-  print(id);
+  try {
+    var id = await dbhelper.deletedata(20);
+    print(id);
+  } catch (e) {
+    print('Metodo:dbcrud.dart-delete ||' + e.toString());
+  }
 }
 
 void update() async {
-  var row = await dbhelper.updatedata(20);
-  print(row);
+  try {
+    var row = await dbhelper.updatedata(20);
+    print(row);
+  } catch (e) {
+    print('Metodo:dbcrud.dart-update ||' + e.toString());
+  }
 }
 
 void borrarDB() async {
-  await dbhelper.borrarBaseDeDatos();
-  print('Base de datos eliminada!!!!');
+  try {
+    await dbhelper.borrarBaseDeDatos();
+    print('Base de datos eliminada!!!!');
+  } catch (e) {
+    print('Metodo:dbcrud.dart-borrarDB ||' + e.toString());
+  }
 }
 
 class Dbcrud extends StatefulWidget {

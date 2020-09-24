@@ -52,8 +52,12 @@ class Databasehelper {
   // functions to insert, query , update and delete
   //Insertar registro
   Future<int> insert(Map<String, dynamic> row) async {
+    // try {
     Database db = await instance.database;
     return await db.insert(tabla, row);
+    // } catch (e) {
+    //  print('Metodo:dbhelper.dart--insert ||' + e.toString());
+    // }
   }
 
 //Consulta para todos los registros
@@ -71,7 +75,9 @@ class Databasehelper {
       Database db = await instance.database;
       var res = await db.query(tabla, where: "edad=?", whereArgs: [edad]);
       return res;
-    } catch (e) {}
+    } catch (e) {
+      print('Metodo:dbhelper.dart--queryspecific ||' + e.toString());
+    }
   }
 
   Future<int> deletedata(int edad) async {
