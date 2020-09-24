@@ -67,9 +67,11 @@ class Databasehelper {
   }
 
   Future<List<Map<String, dynamic>>> queryspecific(int edad) async {
-    Database db = await instance.database;
-    var res = await db.query(tabla, where: "edad=?", whereArgs: [edad]);
-    return res;
+    try {
+      Database db = await instance.database;
+      var res = await db.query(tabla, where: "edad=?", whereArgs: [edad]);
+      return res;
+    } catch (e) {}
   }
 
   Future<int> deletedata(int edad) async {
