@@ -21,10 +21,14 @@ void insertdata() async {
 }
 
 void queryall() async {
-  var allrows = await dbhelper.queryall();
-  allrows.forEach((row) {
-    print(row);
-  });
+  try {
+    var allrows = await dbhelper.queryall();
+    allrows.forEach((row) {
+      print(row);
+    });
+  } catch (e) {
+    print('Metodo:dbcrud.dart-queryall ||' + e.toString());
+  }
 }
 
 void queryspecific() async {

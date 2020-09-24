@@ -58,8 +58,12 @@ class Databasehelper {
 
 //Consulta para todos los registros
   Future<List<Map<String, dynamic>>> queryall() async {
-    Database db = await instance.database;
-    return await db.query(tabla);
+    try {
+      Database db = await instance.database;
+      return await db.query(tabla);
+    } catch (e) {
+      print('Metodo:dbhelper.dart--queryall ||' + e.toString());
+    }
   }
 
   Future<List<Map<String, dynamic>>> queryspecific(int edad) async {
