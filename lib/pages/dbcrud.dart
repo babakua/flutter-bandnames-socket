@@ -45,15 +45,23 @@ void grabarProductos() async {
   }
 }
 
-void queryall() async {
+void obtenerUsuarios() async {
   try {
-    var allrows = await dbhelper.queryall();
+    var allrows = await dbhelper.obtenerUsuarios();
     allrows.forEach((row) {
       print(row);
     });
   } catch (e) {
     print('Metodo:dbcrud.dart-queryall ||' + e.toString());
   }
+}
+
+void obtenerProductos() async {
+  print('Ejecutando:obtenerProductos');
+  var allrows = await dbhelper.obtenerProductos();
+  allrows.forEach((row) {
+    print(row);
+  });
 }
 
 void queryspecific() async {
@@ -201,7 +209,10 @@ Widget btnConsulta() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: queryall,
+          onPressed: () {
+            obtenerUsuarios();
+            obtenerProductos();
+          },
           textColor: Colors.white,
           color: Colors.blue,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
