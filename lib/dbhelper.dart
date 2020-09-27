@@ -7,16 +7,7 @@ class Databasehelper {
   static final _databasename = "cosefi.db";
   static final _databaseversion = 1;
 
-  // static final tabla = "usuarios";
-  // static final tablaInstitucion = "institucion";
-
-  // static final columnID = "idInstitucion";
-  // static final columNombre = "nombre";
-  // static final columnEdad = "edad";
-
-  // static final columnIDI = "idInstitucion";
-  // static final columNombreI = "nombreInstitucion";
-
+//--------------------------------------------------------------------
   static final tblUsuarios = "usuarios"; //TABLA
   static final columnIdInstitucionU = "idInstitucion"; //int
   static final columnNombreU = "nombre"; //TEXT
@@ -25,6 +16,25 @@ class Databasehelper {
   static final columnClaveU = "clave"; //int
   static final columntipoDeUsuarioU = "tipoDeUsuario"; //int
   static final columnidComercioU = "idComercio"; //TEXT
+//---------------------------------------------------------------------
+  static final tblInstitucion = "INSTITUCION"; //TABLA
+  static final columnIdInstitucionI = "idInstitucion"; //int
+  static final columnNombreI = "nombre"; //TEXT
+//----------------------------------------------------------------------
+  static final tblProductos = "PRODUCTOS"; //TABLA
+  static final columnIdInstitucionP = "idInstitucion"; //int
+  static final columnDescripcionP = "descripcion"; //TEXT
+  static final columnidDocumentoP = "idDocumento"; //TEXT
+  static final columnidProductoP = "idProducto"; //TEXT
+  static final columnNombreSocioP = "nombreSocio"; //TEXT
+//---------------------------------------------------------------------
+  static final tblToken = "TOKEN"; //TABLA
+  static final columnIdIT = "id"; //int
+  static final columnTokenT = "token"; //TEXT
+//----------------------------------------------------------------------
+  static final tblTerminal = "TERMINAL"; //TABLA
+  static final columnIdTerminal = "id"; //TEXT
+//----------------------------------------------------------------------
 
   static Database _database;
 
@@ -37,7 +47,7 @@ class Databasehelper {
         .map((row) => row['name'] as String)
         .toList(growable: false)
           ..sort();
-    print(tableNames);
+    print('Tablas creadas:' + tableNames.toString());
   }
 
   Future<Database> get database async {
@@ -64,61 +74,57 @@ class Databasehelper {
   }
 
   Future _onCreate(Database db, int version) async {
-//region definir
+    await db.execute('''
+    CREATE TABLE $tblInstitucion
+      (
+        $columnIdInstitucionI INTEGER,
+        $columnNombreI  TEXT NOT NULL
+      )
 
-    // String ddltablaInstitucion = 'CREATE TABLE INSTITUCION ('
-    //     'idInstitucion int,'
-    //     'NOMBRE TEXT'
-    //     ')';
-
-    // String ddltablaproductos = 'CREATE TABLE PRODUCTOS ('
-    //     'idInstitucion INT,'
-    //     'descripcion TEXT,'
-    //     'idDocumento TEXT,'
-    //     'idProducto TEXT,'
-    //     'nombreSocio TEXT'
-    //     ')';
-
-    // String ddltablaToken = 'CREATE TABLE TOKEN ('
-    //     'id int,'
-    //     'token TEXT'
-    //     ')';
-
-    // String ddlTerminal = 'CREATE TABLE TERMINAL ('
-    //     'idTerminal TEXT'
-    //     ')';
-
-//end region
-
-    // await db.execute(ddltablaInstitucion);
-
-    // await db.execute(ddltablaproductos);
-    // await db.execute(ddltablaToken);
-    // await db.execute(ddlTerminal);
+    ''');
 
     await db.execute('''
- CREATE TABLE $tblUsuarios
+    CREATE TABLE $tblUsuarios
     (
-          $columnIdInstitucionU INTEGER,
-          $columnNombreU  TEXT NOT NULL,
-          $columnApellidoU TEXT NOT NULL,
-          $columnUsuarioU  TEXT NOT NULL,
-          $columnClaveU  TEXT NOT NULL,
-          $columntipoDeUsuarioU  TEXT NOT NULL,
-          $columnidComercioU  INTEGER
+      $columnIdInstitucionU INTEGER,
+      $columnNombreU  TEXT NOT NULL,
+      $columnApellidoU TEXT NOT NULL,
+      $columnUsuarioU  TEXT NOT NULL,
+      $columnClaveU  TEXT NOT NULL,
+      $columntipoDeUsuarioU  TEXT NOT NULL,
+      $columnidComercioU  INTEGER
     )
 
 ''');
 
-//     await db.execute('''
-//  CREATE TABLE $tablaInstitucion
-//     (
-//           $columnID INTEGER PRIMARY KEY,
-//           $columNombreI  TEXT NOT NULL
+    await db.execute('''
+    CREATE TABLE $tblProductos
+    (
+      $columnIdInstitucionP INTEGER,
+      $columnDescripcionP  TEXT NOT NULL,
+      $columnidDocumentoP  TEXT NOT NULL,
+      $columnidProductoP  TEXT NOT NULL,
+      $columnNombreSocioP  TEXT NOT NULL
+    )
 
-//     )
+''');
 
-// ''');
+    await db.execute('''
+    CREATE TABLE $tblToken
+    (
+      $columnIdIT INTEGER,
+      $columnTokenT  TEXT NOT NULL
+    )
+
+''');
+
+    await db.execute('''
+    CREATE TABLE $tblTerminal
+    (
+      $columnIdTerminal  TEXT NOT NULL
+    )
+
+''');
   }
 
   // functions to insert, query , update and delete
@@ -181,6 +187,18 @@ class Databasehelper {
     //var path2 = documentdirectory.path;
     String path = join(documentdirectory.path, _databasename);
     // Database db = await instance.database;
+    Database db = await instance.database;
+    try {
+      if (db.isOpen) {
+        print('La base de datos esta abierta');
+        db.close();
+      } else {
+        print('La base de datos esta CERRADA!!');
+      }
+    } catch (e) {
+      print('ERROR al verificar si esta abierta la db');
+    }
+
     await deleteDatabase(path);
     return "Base de datos eliminada!!!";
   }
