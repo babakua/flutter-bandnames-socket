@@ -7,15 +7,24 @@ class Databasehelper {
   static final _databasename = "cosefi.db";
   static final _databaseversion = 1;
 
-  static final tabla = "usuarios";
-  static final tablaInstitucion = "institucion";
+  // static final tabla = "usuarios";
+  // static final tablaInstitucion = "institucion";
 
-  static final columnID = "idInstitucion";
-  static final columNombre = "nombre";
-  static final columnEdad = "edad";
+  // static final columnID = "idInstitucion";
+  // static final columNombre = "nombre";
+  // static final columnEdad = "edad";
 
-  static final columnIDI = "idInstitucion";
-  static final columNombreI = "nombreInstitucion";
+  // static final columnIDI = "idInstitucion";
+  // static final columNombreI = "nombreInstitucion";
+
+  static final tblUsuarios = "usuarios"; //TABLA
+  static final columnIdInstitucionU = "idInstitucion"; //int
+  static final columnNombreU = "nombre"; //TEXT
+  static final columnApellidoU = "apellido"; //TEXT
+  static final columnUsuarioU = "usuario"; //TEXT
+  static final columnClaveU = "clave"; //int
+  static final columntipoDeUsuarioU = "tipoDeUsuario"; //int
+  static final columnidComercioU = "idComercio"; //TEXT
 
   static Database _database;
 
@@ -55,57 +64,51 @@ class Databasehelper {
   }
 
   Future _onCreate(Database db, int version) async {
-// region definir
+//region definir
 
-    String ddltablaInstitucion = 'CREATE TABLE INSTITUCION ('
-        'idInstitucion int,'
-        'NOMBRE TEXT'
-        ')';
+    // String ddltablaInstitucion = 'CREATE TABLE INSTITUCION ('
+    //     'idInstitucion int,'
+    //     'NOMBRE TEXT'
+    //     ')';
 
-    String ddltablaUsuario = 'CREATE TABLE USUARIOS ('
-        'idInstitucion int,'
-        'Nombre TEXT,'
-        'Apellido TEXT,'
-        'Usuario TEXT,'
-        'Clave TEXT,'
-        'tipoDeUsuario int,'
-        'idComercio TEXT'
-        ')';
+    // String ddltablaproductos = 'CREATE TABLE PRODUCTOS ('
+    //     'idInstitucion INT,'
+    //     'descripcion TEXT,'
+    //     'idDocumento TEXT,'
+    //     'idProducto TEXT,'
+    //     'nombreSocio TEXT'
+    //     ')';
 
-    String ddltablaproductos = 'CREATE TABLE PRODUCTOS ('
-        'idInstitucion INT,'
-        'descripcion TEXT,'
-        'idDocumento TEXT,'
-        'idProducto TEXT,'
-        'nombreSocio TEXT'
-        ')';
+    // String ddltablaToken = 'CREATE TABLE TOKEN ('
+    //     'id int,'
+    //     'token TEXT'
+    //     ')';
 
-    String ddltablaToken = 'CREATE TABLE TOKEN ('
-        'id int,'
-        'token TEXT'
-        ')';
+    // String ddlTerminal = 'CREATE TABLE TERMINAL ('
+    //     'idTerminal TEXT'
+    //     ')';
 
-    String ddlTerminal = 'CREATE TABLE TERMINAL ('
-        'idTerminal TEXT'
-        ')';
+//end region
 
-//endregion
+    // await db.execute(ddltablaInstitucion);
 
-    await db.execute(ddltablaInstitucion);
-    await db.execute(ddltablaUsuario);
-    await db.execute(ddltablaproductos);
-    await db.execute(ddltablaToken);
-    await db.execute(ddlTerminal);
+    // await db.execute(ddltablaproductos);
+    // await db.execute(ddltablaToken);
+    // await db.execute(ddlTerminal);
 
-//     await db.execute('''
-//  CREATE TABLE $tabla
-//     (
-//           $columnID INTEGER PRIMARY KEY,
-//           $columNombre  TEXT NOT NULL,
-//           $columnEdad INTEGER NOT NULL
-//     )
+    await db.execute('''
+ CREATE TABLE $tblUsuarios
+    (
+          $columnIdInstitucionU INTEGER,
+          $columnNombreU  TEXT NOT NULL,
+          $columnApellidoU TEXT NOT NULL,
+          $columnUsuarioU  TEXT NOT NULL,
+          $columnClaveU  TEXT NOT NULL,
+          $columntipoDeUsuarioU  TEXT NOT NULL,
+          $columnidComercioU  INTEGER
+    )
 
-// ''');
+''');
 
 //     await db.execute('''
 //  CREATE TABLE $tablaInstitucion
@@ -125,7 +128,7 @@ class Databasehelper {
 
     Database db = await instance.database;
 
-    await db.insert(tabla, row);
+    await db.insert(tblUsuarios, row);
     leerTablas();
     return 1;
     // } catch (e) {
@@ -137,25 +140,27 @@ class Databasehelper {
   Future<List<Map<String, dynamic>>> queryall() async {
     try {
       Database db = await instance.database;
-      return await db.query(tabla);
+      return await db.query(tblUsuarios);
     } catch (e) {
       print('Metodo:dbhelper.dart--queryall ||' + e.toString());
     }
   }
 
-  Future<List<Map<String, dynamic>>> queryspecific(int edad) async {
+  Future<List<Map<String, dynamic>>> queryspecific(int tipoDeUsuario) async {
     try {
       Database db = await instance.database;
-      var res = await db.query(tabla, where: "edad=?", whereArgs: [edad]);
+      var res = await db.query(tblUsuarios,
+          where: "tipoDeUsuario=?", whereArgs: [tipoDeUsuario]);
       return res;
     } catch (e) {
       print('Metodo:dbhelper.dart--queryspecific ||' + e.toString());
     }
   }
 
-  Future<int> deletedata(int edad) async {
+  Future<int> deletedata(int tipoDeUsuario) async {
     Database db = await instance.database;
-    var res = await db.delete(tabla, where: "edad = ?", whereArgs: [edad]);
+    var res = await db.delete(tblUsuarios,
+        where: "tipoDeUsuario = ?", whereArgs: [tipoDeUsuario]);
 
     return res;
   }
@@ -163,7 +168,8 @@ class Databasehelper {
   Future<int> updatedata(int id) async {
     Database db = await instance.database;
     // var res = await db.update(tabla, {"nombre": "ramon"}, whereArgs: [id]);
-    String sql = "UPDATE usuarios set nombre='" + "ramon' where edad=20";
+    String sql =
+        "UPDATE usuarios set nombre='" + "ramon' where tipoDeUsuario=3";
     print(sql);
     await db.execute(sql);
 

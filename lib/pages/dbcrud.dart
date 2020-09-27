@@ -13,8 +13,16 @@ final dbhelper = Databasehelper.instance; //Para la base de datos local
 void insertdata() async {
   try {
     Map<String, dynamic> row = {
-      Databasehelper.columNombre: "Felicia",
-      Databasehelper.columnEdad: 20,
+      // Databasehelper.columNombre: "Felicia",
+      // Databasehelper.columnEdad: 20,
+      Databasehelper.columnIdInstitucionU: 1,
+      Databasehelper.columnUsuarioU: "fclemente",
+      Databasehelper.columnNombreU: "Felipe",
+      Databasehelper.columnApellidoU: "Clemente",
+      Databasehelper.columntipoDeUsuarioU: 1,
+      Databasehelper.columnClaveU: "1234",
+      Databasehelper.columnidComercioU: 1978,
+      Databasehelper.columntipoDeUsuarioU: 2
     };
     final id = await dbhelper.insert(row);
     print(id);
@@ -37,7 +45,7 @@ void queryall() async {
 
 void queryspecific() async {
   try {
-    var allrows = await dbhelper.queryspecific(20);
+    var allrows = await dbhelper.queryspecific(2);
     print(allrows);
   } catch (e) {
     print('Metodo:dbcrud.dart-queryspecific ||' + e.toString());
@@ -46,7 +54,7 @@ void queryspecific() async {
 
 void delete() async {
   try {
-    var id = await dbhelper.deletedata(20);
+    var id = await dbhelper.deletedata(2);
     print(id);
   } catch (e) {
     print('Metodo:dbcrud.dart-delete ||' + e.toString());
