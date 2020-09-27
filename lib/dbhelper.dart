@@ -8,20 +8,37 @@ class Databasehelper {
   static final _databaseversion = 1;
 
   static final tabla = "usuarios";
+  static final tablaInstitucion = "institucion";
 
-  static final columnID = "id";
-  static final columNombre = "nombre";
+  static final columnID = "idInstitucion";
+  static final columNombre = "nombreInstitucion";
   static final columnEdad = "edad";
+
+  static final columnIDI = "idInstitucion";
+  static final columNombreI = "nombreInstitucion";
 
   static Database _database;
 
   Databasehelper._privateConstructor();
   static final Databasehelper instance = Databasehelper._privateConstructor();
 
+  Future<void> leerTablas() async {
+    var tableNames = (await _database
+            .query('sqlite_master', where: 'type = ?', whereArgs: ['table']))
+        .map((row) => row['name'] as String)
+        .toList(growable: false)
+          ..sort();
+    print(tableNames);
+  }
+
   Future<Database> get database async {
     print('Pasando por get database');
     //Si la base de datos ya existe retorna la db
-    if (_database != null) return _database;
+    if (_database != null) {
+      leerTablas();
+
+      return _database;
+    }
 
     //De no existir la base de datos entonces procede a su creación.
     _database = await _initDatabase();
@@ -47,14 +64,28 @@ class Databasehelper {
     )
 
 ''');
+
+    await db.execute('''
+ CREATE TABLE $tablaInstitucion 
+    (
+          $columnID INTEGER PRIMARY KEY,
+          $columNombreI  TEXT NOT NULL
+     
+    )
+
+''');
   }
 
   // functions to insert, query , update and delete
   //Insertar registro
   Future<int> insert(Map<String, dynamic> row) async {
     // try {
+
     Database db = await instance.database;
-    return await db.insert(tabla, row);
+
+    await db.insert(tabla, row);
+    leerTablas();
+    return 1;
     // } catch (e) {
     //  print('Metodo:dbhelper.dart--insert ||' + e.toString());
     // }
