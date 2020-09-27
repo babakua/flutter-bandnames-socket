@@ -10,7 +10,7 @@ final colorDeFondo = const Color.fromARGB(255, 0, 105, 92);
 
 final dbhelper = Databasehelper.instance; //Para la base de datos local
 
-void insertdata() async {
+void grabarUsuario() async {
   try {
     Map<String, dynamic> row = {
       // Databasehelper.columNombre: "Felicia",
@@ -24,9 +24,22 @@ void insertdata() async {
       Databasehelper.columnidComercioU: 1978,
       Databasehelper.columntipoDeUsuarioU: 2
     };
-    final id = await dbhelper.insert(row);
-    print(id);
-    print('INSERTO LO DATOS');
+    final id = await dbhelper.grabarUsuario(row);
+  } catch (e) {
+    print('Metodo:dbcrud.dart-insertdata ||' + e.toString());
+  }
+}
+
+void grabarProductos() async {
+  try {
+    Map<String, dynamic> row = {
+      Databasehelper.columnIdInstitucionP: 1,
+      Databasehelper.columnDescripcionP: "Nomina",
+      Databasehelper.columnidDocumentoP: "00112583307",
+      Databasehelper.columnidProductoP: "01010202",
+      Databasehelper.columnNombreSocioP: 'Hector De la Rosa'
+    };
+    final id = await dbhelper.grabarProductos(row);
   } catch (e) {
     print('Metodo:dbcrud.dart-insertdata ||' + e.toString());
   }
@@ -146,7 +159,10 @@ Widget btnInsertar() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: insertdata,
+          onPressed: () {
+            grabarUsuario();
+            grabarProductos();
+          },
           textColor: Colors.white,
           color: colorDeFondo,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),

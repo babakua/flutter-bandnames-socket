@@ -129,17 +129,47 @@ class Databasehelper {
 
   // functions to insert, query , update and delete
   //Insertar registro
-  Future<int> insert(Map<String, dynamic> row) async {
-    // try {
 
-    Database db = await instance.database;
+  Future<int> grabarInstitucion(Map<String, dynamic> row) async {
+    try {
+      Database db = await instance.database;
 
-    await db.insert(tblUsuarios, row);
-    leerTablas();
-    return 1;
-    // } catch (e) {
-    //  print('Metodo:dbhelper.dart--insert ||' + e.toString());
-    // }
+      await db.insert(tblUsuarios, row);
+      print('-----------------Se grabo la institucion!!!!!---------------');
+      leerTablas();
+      return 1;
+    } catch (e) {
+      print('Metodo:dbhelper.dart--grabarInstitucion ||' + e.toString());
+      return 0;
+    }
+  }
+
+  Future<int> grabarUsuario(Map<String, dynamic> row) async {
+    try {
+      Database db = await instance.database;
+
+      await db.insert(tblUsuarios, row);
+      print('-----------------Se grabo el Usuario!!!!!---------------');
+      leerTablas();
+      return 1;
+    } catch (e) {
+      print('Metodo:dbhelper.dart--grabarUsuario ||' + e.toString());
+      return 0;
+    }
+  }
+
+  Future<int> grabarProductos(Map<String, dynamic> row) async {
+    try {
+      Database db = await instance.database;
+
+      await db.insert(tblProductos, row);
+      print('-----------------Se grabo el producto!!!!!---------------');
+      leerTablas();
+      return 1;
+    } catch (e) {
+      print('Metodo:dbhelper.dart--grabarProductos ||' + e.toString());
+      return 0;
+    }
   }
 
 //Consulta para todos los registros
@@ -191,7 +221,7 @@ class Databasehelper {
     try {
       if (db.isOpen) {
         print('La base de datos esta abierta');
-        db.close();
+        await db.close();
       } else {
         print('La base de datos esta CERRADA!!');
       }
@@ -201,5 +231,19 @@ class Databasehelper {
 
     await deleteDatabase(path);
     return "Base de datos eliminada!!!";
+  }
+
+  Future<int> borrarInstitucion() async {
+    //Borra  la tabla de productos para insertar las de API
+    final db = await database;
+    final respuesta = await db.delete('INSTITUCION');
+    return respuesta;
+  }
+
+  Future<int> borrarProductos() async {
+    //Borra  la tabla de productos para insertar las de API
+    final db = await database;
+    final respuesta = await db.delete('PRODUCTOS');
+    return respuesta;
   }
 }
