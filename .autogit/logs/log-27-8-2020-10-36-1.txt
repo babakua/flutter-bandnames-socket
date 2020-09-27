@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Sun Sep 27 2020 10:36:01 GMT-0400 (Bolivia Time)
+------------------------------------------------------
+
+Modified files:
+* lib/dbhelper.dart
+* lib/main.dart
+
+
+Created files:
+* .autogit/logs/log-26-8-2020-21-5-0.txt
+
+
+Deleted files:
+
+
+Renamed files:

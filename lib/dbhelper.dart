@@ -11,7 +11,7 @@ class Databasehelper {
   static final tablaInstitucion = "institucion";
 
   static final columnID = "idInstitucion";
-  static final columNombre = "nombreInstitucion";
+  static final columNombre = "nombre";
   static final columnEdad = "edad";
 
   static final columnIDI = "idInstitucion";
@@ -55,25 +55,67 @@ class Databasehelper {
   }
 
   Future _onCreate(Database db, int version) async {
-    await db.execute('''
- CREATE TABLE $tabla 
-    (
-          $columnID INTEGER PRIMARY KEY,
-          $columNombre  TEXT NOT NULL,
-          $columnEdad INTEGER NOT NULL 
-    )
+// region definir
 
-''');
+    String ddltablaInstitucion = 'CREATE TABLE INSTITUCION ('
+        'idInstitucion int,'
+        'NOMBRE TEXT'
+        ')';
 
-    await db.execute('''
- CREATE TABLE $tablaInstitucion 
-    (
-          $columnID INTEGER PRIMARY KEY,
-          $columNombreI  TEXT NOT NULL
-     
-    )
+    String ddltablaUsuario = 'CREATE TABLE USUARIOS ('
+        'idInstitucion int,'
+        'Nombre TEXT,'
+        'Apellido TEXT,'
+        'Usuario TEXT,'
+        'Clave TEXT,'
+        'tipoDeUsuario int,'
+        'idComercio TEXT'
+        ')';
 
-''');
+    String ddltablaproductos = 'CREATE TABLE PRODUCTOS ('
+        'idInstitucion INT,'
+        'descripcion TEXT,'
+        'idDocumento TEXT,'
+        'idProducto TEXT,'
+        'nombreSocio TEXT'
+        ')';
+
+    String ddltablaToken = 'CREATE TABLE TOKEN ('
+        'id int,'
+        'token TEXT'
+        ')';
+
+    String ddlTerminal = 'CREATE TABLE TERMINAL ('
+        'idTerminal TEXT'
+        ')';
+
+//endregion
+
+    await db.execute(ddltablaInstitucion);
+    await db.execute(ddltablaUsuario);
+    await db.execute(ddltablaproductos);
+    await db.execute(ddltablaToken);
+    await db.execute(ddlTerminal);
+
+//     await db.execute('''
+//  CREATE TABLE $tabla
+//     (
+//           $columnID INTEGER PRIMARY KEY,
+//           $columNombre  TEXT NOT NULL,
+//           $columnEdad INTEGER NOT NULL
+//     )
+
+// ''');
+
+//     await db.execute('''
+//  CREATE TABLE $tablaInstitucion
+//     (
+//           $columnID INTEGER PRIMARY KEY,
+//           $columNombreI  TEXT NOT NULL
+
+//     )
+
+// ''');
   }
 
   // functions to insert, query , update and delete
@@ -123,7 +165,7 @@ class Databasehelper {
     // var res = await db.update(tabla, {"nombre": "ramon"}, whereArgs: [id]);
     String sql = "UPDATE usuarios set nombre='" + "ramon' where edad=20";
     print(sql);
-    db.execute(sql);
+    await db.execute(sql);
 
     return 1;
   }
