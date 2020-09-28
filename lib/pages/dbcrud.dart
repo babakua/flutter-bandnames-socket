@@ -13,8 +13,6 @@ final dbhelper = Databasehelper.instance; //Para la base de datos local
 void grabarUsuario() async {
   try {
     Map<String, dynamic> row = {
-      // Databasehelper.columNombre: "Felicia",
-      // Databasehelper.columnEdad: 20,
       Databasehelper.columnIdInstitucionU: 1,
       Databasehelper.columnUsuarioU: "fclemente",
       Databasehelper.columnNombreU: "Felipe",
