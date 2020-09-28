@@ -52,7 +52,7 @@ void obtenerUsuarios() async {
       print(row);
     });
   } catch (e) {
-    print('Metodo:dbcrud.dart-queryall ||' + e.toString());
+    print('Metodo:dbcrud.dart-obtenerUsuarios ||' + e.toString());
   }
 }
 
@@ -61,6 +61,23 @@ void obtenerProductos() async {
   var allrows = await dbhelper.obtenerProductos();
   allrows.forEach((row) {
     print(row);
+  });
+}
+
+void obtenerProductos2() async {
+  print('Ejecutando:obtenerProductos2');
+  var allrows = await dbhelper.obtenerProductos2();
+  allrows.forEach((row) {
+    print('********* Datos del Modelo: id Institucion:' +
+        row.idInstitucion.toString() +
+        '--Descripcion:' +
+        row.descripcion +
+        '--idDocumento:' +
+        row.idDocumento +
+        '--id Producto:' +
+        row.idProducto +
+        '--Nombre Socio:' +
+        row.nombreSocio);
   });
 }
 
@@ -79,6 +96,33 @@ void delete() async {
     print(id);
   } catch (e) {
     print('Metodo:dbcrud.dart-delete ||' + e.toString());
+  }
+}
+
+void borrarInstitucion() async {
+  try {
+    var id = await dbhelper.borrarInstitucion();
+    print(id);
+  } catch (e) {
+    print('Metodo:dbcrud.dart-borrarInstitucion ||' + e.toString());
+  }
+}
+
+void borrarUsuarios() async {
+  try {
+    var id = await dbhelper.borrarUsuarios();
+    print(id);
+  } catch (e) {
+    print('Metodo:dbcrud.dart-borrarUsuarios ||' + e.toString());
+  }
+}
+
+void borrarProductos() async {
+  try {
+    var id = await dbhelper.borrarProductos();
+    print(id);
+  } catch (e) {
+    print('Metodo:dbcrud.dart-borrarUsuarios ||' + e.toString());
   }
 }
 
@@ -212,6 +256,7 @@ Widget btnConsulta() {
           onPressed: () {
             obtenerUsuarios();
             obtenerProductos();
+            obtenerProductos2();
           },
           textColor: Colors.white,
           color: Colors.blue,
@@ -290,7 +335,11 @@ Widget btnBorrar() {
       child: RaisedButton(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
-          onPressed: delete,
+          onPressed: () {
+            borrarInstitucion();
+            borrarUsuarios();
+            borrarProductos();
+          },
           textColor: Colors.white,
           color: Colors.red,
           padding: EdgeInsets.fromLTRB(5, 0, 0, 0),

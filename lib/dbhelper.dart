@@ -2,9 +2,16 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+import 'models/ProducutosModels.dart';
 import 'dart:convert';
 
 class Databasehelper {
+  ProductosModels ProductosModelssFromJson(String str) =>
+      ProductosModels.fromJson(json.decode(str));
+
+  String ProductosModelsToJson(ProductosModels data) =>
+      json.encode(data.toJson());
+
   static final _databasename = "cosefi.db";
   static final _databaseversion = 1;
 
@@ -266,77 +273,40 @@ class Databasehelper {
 
   Future<int> borrarInstitucion() async {
     //Borra  la tabla de productos para insertar las de API
-    final db = await database;
-    final respuesta = await db.delete('INSTITUCION');
+    Database db = await instance.database;
+    var res = await db.delete(tblInstitucion);
+
+    return res;
+  }
+
+  Future<int> borrarUsuarios() async {
+    //Borra  la tabla de productos para insertar las de API
+    Database db = await instance.database;
+    final respuesta = await db.delete(tblUsuarios);
     return respuesta;
   }
 
   Future<int> borrarProductos() async {
     //Borra  la tabla de productos para insertar las de API
-    final db = await database;
-    final respuesta = await db.delete('PRODUCTOS');
+    Database db = await instance.database;
+    final respuesta = await db.delete(tblProductos);
     return respuesta;
   }
-}
 
-ProductosModels ProductosModelssFromJson(String str) =>
-    ProductosModels.fromJson(json.decode(str));
+  Future<List<ProductosModels>> obtenerProductos2() async {
+    //Para que funcione el await debe ser un metodo async
+    Database db = await instance.database; //Instancia de la base de datos
+    final respuesta = await db.query('PRODUCTOS');
+    print(respuesta.toString());
+    List<ProductosModels> lista = respuesta.isNotEmpty
+        ? respuesta
+            .map((c) => //La c es cualquier nombre es solo un alias
+                ProductosModels.fromJson(c))
+            .toList() //Convierte el modelo en un json
+        : []; //los [] indica que retorne una lista vacia
 
-String ProductosModelsToJson(ProductosModels data) =>
-    json.encode(data.toJson());
-
-class ProductosModels {
-  int idInstitucion;
-  String descripcion;
-  String idDocumento;
-  String idProducto;
-  String nombreSocio;
-
-  ProductosModels({
-    this.idInstitucion,
-    this.descripcion,
-    this.idDocumento,
-    this.idProducto,
-    this.nombreSocio,
-  });
-
-//El factory es para crear una instancia  de mi modelo de institución
-  factory ProductosModels.fromJson(Map<String, dynamic> json) =>
-      new ProductosModels(
-        idInstitucion: json["idInstitucion"],
-        descripcion: json["descripcion"],
-        idDocumento: json["idDocumento"],
-        idProducto: json["idProducto"],
-        nombreSocio: json["nombreSocio"],
-      );
-
-//El toJson es retorna un objeto del mismo JSON con la estructura del modelo
-  Map<String, dynamic> toJson() => {
-        "idInstitucion": idInstitucion,
-        "descripcion": descripcion,
-        "idDocumento": idDocumento,
-        "idProducto": idProducto,
-        "nombreSocio": nombreSocio,
-      };
-
-  //Lo nuevo
-  Map<String, dynamic> toMap() {
-    var map = new Map<String, dynamic>();
-
-    map["idInstitucion"] = idInstitucion;
-    map["descripcion"] = descripcion;
-    map["idDocumento"] = idDocumento;
-    map["idProducto"] = idProducto;
-    map["nombreSocio"] = nombreSocio;
-
-    return map;
-  }
-
-  ProductosModels.fromMap(dynamic obj) {
-    this.idInstitucion = obj["idInstitucion"];
-    this.descripcion = obj["descripcion"];
-    this.idDocumento = obj["idDocumento"];
-    this.idProducto = obj["idProducto"];
-    this.nombreSocio = obj["nombreSocio"];
+    print(
+        '----------Obteniendo los datos de obtenerProductos2 con el MODELO----------');
+    return lista;
   }
 }
