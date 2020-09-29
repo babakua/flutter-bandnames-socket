@@ -12,7 +12,7 @@ class Databasehelper {
   String ProductosModelsToJson(ProductosModels data) =>
       json.encode(data.toJson());
 
-  static final _databasename = "cosefi.db";
+  static final _databasename = "testing.db";
   static final _databaseversion = 1;
 
 //--------------------------------------------------------------------
