@@ -184,6 +184,8 @@ class _DbcrudState extends State<Dbcrud> {
                     btnConsultaEspecifica(),
                     SizedBox(height: 20),
                     btnEliminarDB(),
+                    SizedBox(height: 20),
+                    btnBotonTexto()
                   ],
                 ),
               ),
@@ -283,6 +285,14 @@ Widget btnConsulta() {
                   ),
                 ],
               ))));
+}
+
+Widget btnBotonTexto() {
+  return TextButton(
+      onPressed: () {
+        print('boton texto');
+      },
+      child: null);
 }
 
 Widget btnActualizar() {
