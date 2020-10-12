@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:votacion/dbhelper.dart';
 
@@ -185,7 +186,13 @@ class _DbcrudState extends State<Dbcrud> {
                     SizedBox(height: 20),
                     btnEliminarDB(),
                     SizedBox(height: 20),
-                    btnBotonTexto()
+                    CupertinoButton(
+                        child: Text("Upload"),
+                        color: Colors.green[100],
+                        minSize: 50,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        onPressed: () => print("dddd")),
                   ],
                 ),
               ),
