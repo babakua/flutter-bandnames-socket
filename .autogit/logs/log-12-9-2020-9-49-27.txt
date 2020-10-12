@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Mon Oct 12 2020 09:49:27 GMT-0400 (Bolivia Time)
+------------------------------------------------------
+
+Modified files:
+* lib/main.dart
+* lib/pages/dbcrud.dart
+
+
+Created files:
+* .autogit/logs/log-6-9-2020-21-30-41.txt
+
+
+Deleted files:
+
+
+Renamed files:
